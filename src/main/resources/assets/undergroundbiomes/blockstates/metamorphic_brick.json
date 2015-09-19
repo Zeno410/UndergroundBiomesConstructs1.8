@@ -1,0 +1,28 @@
+{
+	"variants":{
+		"metamorphic_type=gneiss":{
+			"model":"undergroundbiomes:gneiss_brick"
+		},
+		"metamorphic_type=eclogite":{
+			"model":"undergroundbiomes:eclogite_brick"
+		},
+		"metamorphic_type=marble":{
+			"model":"undergroundbiomes:marble_brick"
+		},
+		"metamorphic_type=quartzite":{
+			"model":"undergroundbiomes:quartzite_brick"
+		},
+		"metamorphic_type=blueschist":{
+			"model":"undergroundbiomes:blueschist_brick"
+		},
+		"metamorphic_type=greenschist":{
+			"model":"undergroundbiomes:greenschist_brick"
+		},
+		"metamorphic_type=soapstone":{
+			"model":"undergroundbiomes:soapstone_brick"
+		},
+		"metamorphic_type=migmatite":{
+			"model":"undergroundbiomes:migmatite_brick"
+		}
+	}
+}

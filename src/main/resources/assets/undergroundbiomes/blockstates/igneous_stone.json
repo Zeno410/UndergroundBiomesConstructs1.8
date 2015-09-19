@@ -1,0 +1,28 @@
+{
+	"variants":{
+		"igneous_type=red_granite":{
+			"model":"undergroundbiomes:red_granite"
+		},
+		"igneous_type=black_granite":{
+			"model":"undergroundbiomes:black_granite"
+		},
+		"igneous_type=rhyolite":{
+			"model":"undergroundbiomes:rhyolite"
+		},
+		"igneous_type=andesite":{
+			"model":"undergroundbiomes:andesite"
+		},
+		"igneous_type=gabbro":{
+			"model":"undergroundbiomes:gabbro"
+		},
+		"igneous_type=basalt":{
+			"model":"undergroundbiomes:basalt"
+		},
+		"igneous_type=komatiite":{
+			"model":"undergroundbiomes:komatiite"
+		},
+		"igneous_type=dacite":{
+			"model":"undergroundbiomes:dacite"
+		}
+	}
+}

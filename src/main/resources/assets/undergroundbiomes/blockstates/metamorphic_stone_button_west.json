@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "powered=false,metamorphic_type=gneiss": { "model": "gneiss_stone_button", "x": 90, "y": 270 },
+        "powered=false,metamorphic_type=eclogite": { "model": "eclogite_stone_button", "x": 90, "y": 270 },
+        "powered=false,metamorphic_type=marble": { "model": "marble_stone_button", "x": 90, "y": 270 },
+        "powered=false,metamorphic_type=quartzite": { "model": "quartzite_stone_button", "x": 90, "y": 270 },
+        "powered=false,metamorphic_type=blueschist": { "model": "blueschist_stone_button", "x": 90, "y": 270 },
+        "powered=false,metamorphic_type=greenschist": { "model": "greenschist_stone_button", "x": 90, "y": 270 },
+        "powered=false,metamorphic_type=soapstone": { "model": "soapstone_stone_button", "x": 90, "y": 270 },
+        "powered=false,metamorphic_type=migmatite": { "model": "migmatite_stone_button", "x": 90, "y": 270 },
+        "powered=true,metamorphic_type=gneiss": { "model": "gneiss_stone_button", "x": 90, "y": 270 },
+        "powered=true,metamorphic_type=eclogite": { "model": "eclogite_stone_button", "x": 90, "y": 270 },
+        "powered=true,metamorphic_type=marble": { "model": "marble_stone_button", "x": 90, "y": 270 },
+        "powered=true,metamorphic_type=quartzite": { "model": "quartzite_stone_button", "x": 90, "y": 270 },
+        "powered=true,metamorphic_type=blueschist": { "model": "blueschist_stone_button", "x": 90, "y": 270 },
+        "powered=true,metamorphic_type=greenschist": { "model": "greenschist_stone_button", "x": 90, "y": 270 },
+        "powered=true,metamorphic_type=soapstone": { "model": "soapstone_stone_button", "x": 90, "y": 270 },
+        "powered=true,metamorphic_type=migmatite": { "model": "migmatite_stone_button", "x": 90, "y": 270 }
+    }
+}

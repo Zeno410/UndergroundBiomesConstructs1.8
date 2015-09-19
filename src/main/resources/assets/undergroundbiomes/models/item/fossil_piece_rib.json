@@ -1,0 +1,6 @@
+{
+	"parent":"undergroundbiomes:item/standard_item",
+	"textures":{
+		"layer0":"undergroundbiomes:items/fossilPiece_2"
+	}
+}

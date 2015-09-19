@@ -1,0 +1,101 @@
+﻿# Underground Biomes localization
+# ===============================
+# Blocks
+
+tile.igneous_stone.red_granite.name=Rosengranit
+tile.igneous_stone.black_granite.name=Schwarzer Granit
+tile.igneous_stone.rhyolite.name=Rhyolith
+tile.igneous_stone.andesite.name=Andesit
+tile.igneous_stone.gabbro.name=Gabbro
+tile.igneous_stone.basalt.name=Basalt
+tile.igneous_stone.komatiite.name=Komatiit
+tile.igneous_stone.dacite.name=Dazit
+
+tile.igneous_cobble.red_granite.name=Rosegranit Pflasterstein
+tile.igneous_cobble.black_granite.name=Schwarzer Granit Pflasterstein
+tile.igneous_cobble.rhyolite.name=Rhyolith Pflasterstein
+tile.igneous_cobble.andesite.name=Andesit Pflasterstein
+tile.igneous_cobble.gabbro.name=Gabbro Pflasterstein
+tile.igneous_cobble.basalt.name=Basalt Pflasterstein
+tile.igneous_cobble.komatiite.name=Komatiit Pflasterstein
+tile.igneous_cobble.dacite.name=Dazit Pflasterstein
+
+tile.igneous_brick.red_granite.name=Rosegranit Ziegel
+tile.igneous_brick.black_granite.name=Schwarzer Granit Ziegel
+tile.igneous_brick.rhyolite.name=Rhyolith Ziegel
+tile.igneous_brick.andesite.name=Andesit Ziegel
+tile.igneous_brick.gabbro.name=Gabbro Ziegel
+tile.igneous_brick.basalt.name=Basalt Ziegel
+tile.igneous_brick.komatiite.name=Komatiit Ziegel
+tile.igneous_brick.dacite.name=Dazit Ziegel
+
+tile.metamorphic_stone.gneiss.name=Gneis
+tile.metamorphic_stone.eclogite.name=Eklogit
+tile.metamorphic_stone.marble.name=Marmor
+tile.metamorphic_stone.quartzite.name=Quarzit
+tile.metamorphic_stone.blueschist.name=Blauschiefer
+tile.metamorphic_stone.greenschist.name=Grünschiefer
+tile.metamorphic_stone.soapstone.name=Speckstein
+tile.metamorphic_stone.migmatite.name=Migmatit
+
+tile.metamorphic_cobble.gneiss.name=Gneis Pflasterstein
+tile.metamorphic_cobble.eclogite.name=Eklogit Pflasterstein
+tile.metamorphic_cobble.marble.name=Marmor Pflasterstein
+tile.metamorphic_cobble.quartzite.name=Quarzit Pflasterstein
+tile.metamorphic_cobble.blueschist.name=Blauschiefer Pflasterstein
+tile.metamorphic_cobble.greenschist.name=Grünschiefer Pflasterstein
+tile.metamorphic_cobble.soapstone.name=Speckstein Pflasterstein
+tile.metamorphic_cobble.migmatite.name=Migmatit Pflasterstein
+
+tile.metamorphic_brick.gneiss.name=Gneis Ziegel
+tile.metamorphic_brick.eclogite.name=Eklogit Ziegel
+tile.metamorphic_brick.marble.name=Marmor Ziegel
+tile.metamorphic_brick.quartzite.name=Quarzit Ziegel
+tile.metamorphic_brick.blueschist.name=Blauschiefer Ziegel
+tile.metamorphic_brick.greenschist.name=Grünschiefel Ziegel
+tile.metamorphic_brick.soapstone.name=Speckstein Ziegel
+tile.metamorphic_brick.migmatite.name=Migmatit Ziegel
+
+tile.sedimentary_stone.limestone.name=Kalkstein
+tile.sedimentary_stone.chalk.name=Kreide
+tile.sedimentary_stone.shale.name=Schalenstein
+tile.sedimentary_stone.siltstone.name=Schluff
+tile.sedimentary_stone.lignite.name=Xylitblock
+tile.sedimentary_stone.dolomite.name=Dolomit
+tile.sedimentary_stone.greywacke.name=Grauwacke
+tile.sedimentary_stone.chert.name=Hornstein
+
+tile.igneous_brick_halfslab.red_granite.name=Rosegranit Ziegelstufe
+tile.igneous_brick_halfslab.black_granite.name=Schwarzer Granit Ziegelstufe
+tile.igneous_brick_halfslab.rhyolite.name=Rhyolith Ziegelstufe
+tile.igneous_brick_halfslab.andesite.name=Andesit Ziegelstufe
+tile.igneous_brick_halfslab.gabbro.name=Gabbro Ziegelstufe
+tile.igneous_brick_halfslab.basalt.name=Basalt Ziegelstufe
+tile.igneous_brick_halfslab.komatiite.name=Komatiit Ziegelstufe
+tile.igneous_brick_halfslab.dacite.name=Dazit Ziegelstufe
+
+tile.metamorphic_brick_halfslab.gneiss.name=Gneis Ziegelstufe
+tile.metamorphic_brick_halfslab.eclogite.name=Eklogit Ziegelstufe
+tile.metamorphic_brick_halfslab.marble.name=Marmor Ziegelstufe
+tile.metamorphic_brick_halfslab.quartzite.name=Quarzit Ziegelstufe
+tile.metamorphic_brick_halfslab.blueschist.name=Blauschiefer Ziegelstufe
+tile.metamorphic_brick_halfslab.greenschist.name=Grünschiefer Ziegelstufe
+tile.metamorphic_brick_halfslab.soapstone.name=Speckstein Ziegelstufe
+tile.metamorphic_brick_halfslab.migmatite.name=Migmatit Ziegelstufe
+
+tile.anthraciteCoal.name=Anthrazit
+
+# Items
+
+item.ligniteCoal.name=Xylit
+item.fossil_piece.ammonite.name=Ammoniten
+item.fossil_piece.shell.name=Muschel
+item.fossil_piece.bone.name=Knochen
+item.fossil_piece.boneshard.name=Knochenfragmente
+item.fossil_piece.rib.name=Rippe
+item.fossil_piece.skull.name=Schädel
+
+# Creative Tabs
+
+itemGroup.undergroundbiomesblocks=Underground Biomes Blöcken
+itemGroup.undergroundbiomesitems=Underground Biomes Items

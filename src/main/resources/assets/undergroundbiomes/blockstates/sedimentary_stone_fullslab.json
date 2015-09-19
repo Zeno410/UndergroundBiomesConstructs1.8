@@ -1,0 +1,28 @@
+{
+	"variants":{
+		"sedimentary_type=limestone":{
+			"model":"undergroundbiomes:limestone"
+		},
+		"sedimentary_type=chalk":{
+			"model":"undergroundbiomes:chalk"
+		},
+		"sedimentary_type=shale":{
+			"model":"undergroundbiomes:shale"
+		},
+		"sedimentary_type=siltstone":{
+			"model":"undergroundbiomes:siltstone"
+		},
+		"sedimentary_type=lignite":{
+			"model":"undergroundbiomes:lignite"
+		},
+		"sedimentary_type=dolomite":{
+			"model":"undergroundbiomes:dolomite"
+		},
+		"sedimentary_type=greywacke":{
+			"model":"undergroundbiomes:greywacke"
+		},
+		"sedimentary_type=chert":{
+			"model":"undergroundbiomes:chert"
+		}
+	}
+}

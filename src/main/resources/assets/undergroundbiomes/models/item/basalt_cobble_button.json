@@ -1,0 +1,25 @@
+{
+	"parent":"block/button_inventory",
+	"textures":{
+		"texture":"undergroundbiomes:blocks/basalt_cobble"
+	},
+	"display":{
+		"thirdperson":{
+			"rotation":[
+				10,
+				-45,
+				170
+			],
+			"translation":[
+				0,
+				1.5,
+				-2.75
+			],
+			"scale":[
+				0.375,
+				0.375,
+				0.375
+			]
+		}
+	}
+}

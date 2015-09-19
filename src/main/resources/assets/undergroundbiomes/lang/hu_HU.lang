@@ -1,0 +1,101 @@
+﻿# Underground Biomes localization
+# ===============================
+# Blocks
+
+tile.igneous_stone.red_granite.name=Vörös gránit
+tile.igneous_stone.black_granite.name=Fekete gránit
+tile.igneous_stone.rhyolite.name=Riolit
+tile.igneous_stone.andesite.name=Andezit
+tile.igneous_stone.gabbro.name=Gabbró
+tile.igneous_stone.basalt.name=Bazalt
+tile.igneous_stone.komatiite.name=Komatiit
+tile.igneous_stone.dacite.name=Dácit
+
+tile.igneous_cobble.red_granite.name=Vörös gránit zúzalék
+tile.igneous_cobble.black_granite.name=Fekete gránit zúzalék
+tile.igneous_cobble.rhyolite.name=Riolit zúzalék
+tile.igneous_cobble.andesite.name=Andezit zúzalék
+tile.igneous_cobble.gabbro.name=Gabbró zúzalék
+tile.igneous_cobble.basalt.name=Bazalt zúzalék
+tile.igneous_cobble.komatiite.name=Komatiit zúzalék
+tile.igneous_cobble.dacite.name=Dácit zúzalék
+
+tile.igneous_brick.red_granite.name=Vörös gránit tégla
+tile.igneous_brick.black_granite.name=Fekete gránit tégla
+tile.igneous_brick.rhyolite.name=Riolit tégla
+tile.igneous_brick.andesite.name=Andezit tégla
+tile.igneous_brick.gabbro.name=Gabbró tégla
+tile.igneous_brick.basalt.name=Bazalt tégla
+tile.igneous_brick.komatiite.name=Komatiit tégla
+tile.igneous_brick.dacite.name=Dácit tégla
+
+tile.metamorphic_stone.gneiss.name=Gneisz
+tile.metamorphic_stone.eclogite.name=Eklogit
+tile.metamorphic_stone.marble.name=Márvány
+tile.metamorphic_stone.quartzite.name=Kvarcit
+tile.metamorphic_stone.blueschist.name=Kékpala
+tile.metamorphic_stone.greenschist.name=Zöldpala
+tile.metamorphic_stone.soapstone.name=Szappankő
+tile.metamorphic_stone.migmatite.name=Migmatit
+
+tile.metamorphic_cobble.gneiss.name=Gneisz zúzalék
+tile.metamorphic_cobble.eclogite.name=Eklogit zúzalék
+tile.metamorphic_cobble.marble.name=Márvány zúzalék
+tile.metamorphic_cobble.quartzite.name=Kvarcit zúzalék
+tile.metamorphic_cobble.blueschist.name=Kékpala zúzalék
+tile.metamorphic_cobble.greenschist.name=Zöldpala zúzalék
+tile.metamorphic_cobble.soapstone.name=Szappankő zúzalék
+tile.metamorphic_cobble.migmatite.name=Migmatit zúzalék
+
+tile.metamorphic_brick.gneiss.name=Gneisz tégla
+tile.metamorphic_brick.eclogite.name=Eklogit tégla
+tile.metamorphic_brick.marble.name=Márvány tégla
+tile.metamorphic_brick.quartzite.name=Kvarcit tégla
+tile.metamorphic_brick.blueschist.name=Kékpala tégla
+tile.metamorphic_brick.greenschist.name=Zöldpala tégla
+tile.metamorphic_brick.soapstone.name=Szappankő tégla
+tile.metamorphic_brick.migmatite.name=Migmatit tégla
+
+tile.sedimentary_stone.limestone.name=Mészkő
+tile.sedimentary_stone.chalk.name=Krétakő
+tile.sedimentary_stone.shale.name=Agyagpala
+tile.sedimentary_stone.siltstone.name=Aleurolit
+tile.sedimentary_stone.lignite.name=Lignit tömb
+tile.sedimentary_stone.dolomite.name=Dolomit
+tile.sedimentary_stone.greywacke.name=Grauwacke
+tile.sedimentary_stone.chert.name=Kovakő
+
+tile.igneous_brick_halfslab.red_granite.name=Vörös gránit tégla lap
+tile.igneous_brick_halfslab.black_granite.name=Fekete gránit tégla lap
+tile.igneous_brick_halfslab.rhyolite.name=Riolit tégla lap
+tile.igneous_brick_halfslab.andesite.name=Andezit tégla lap
+tile.igneous_brick_halfslab.gabbro.name=Gabbró tégla lap
+tile.igneous_brick_halfslab.basalt.name=Bazalt tégla lap
+tile.igneous_brick_halfslab.komatiite.name=Komatiit tégla lap
+tile.igneous_brick_halfslab.dacite.name=Dácit tégla lap
+
+tile.metamorphic_brick_halfslab.gneiss.name=Gneisz tégla lap
+tile.metamorphic_brick_halfslab.eclogite.name=Eklogit tégla lap
+tile.metamorphic_brick_halfslab.marble.name=Márvány tégla lap
+tile.metamorphic_brick_halfslab.quartzite.name=Kvarcit tégla lap
+tile.metamorphic_brick_halfslab.blueschist.name=Kékpala tégla lap
+tile.metamorphic_brick_halfslab.greenschist.name=Zöldpala tégla lap
+tile.metamorphic_brick_halfslab.soapstone.name=Szappankő tégla lap
+tile.metamorphic_brick_halfslab.migmatite.name=Migmatit tégla lap
+
+tile.anthraciteCoal.name=Antracit
+
+# Items
+
+item.ligniteCoal.name=Lignit
+item.fossil_piece.ammonite.name=Ammonitesz
+item.fossil_piece.shell.name=Kagyló fosszília
+item.fossil_piece.bone.name=Csontdarab
+item.fossil_piece.boneshard.name=Csonttöredék
+item.fossil_piece.rib.name=Borda
+item.fossil_piece.skull.name=Koponya
+
+# Creative Tabs
+
+itemGroup.undergroundbiomesblocks=Underground Biomes Tömbök
+itemGroup.undergroundbiomesitems=Underground Biomes Tárgyak
