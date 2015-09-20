@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "powered=false,igneous_type=red_granite": { "model": "red_granite_cobble_button", "x": 90 , "y": 270 },
+        "powered=false,igneous_type=black_granite": { "model": "black_granite_cobble_button", "x": 90 , "y": 270 },
+        "powered=false,igneous_type=rhyolite": { "model": "rhyolite_cobble_button", "x": 90 , "y": 270 },
+        "powered=false,igneous_type=andesite": { "model": "andesite_cobble_button", "x": 90 , "y": 270 },
+        "powered=false,igneous_type=gabbro": { "model": "gabbro_cobble_button", "x": 90 , "y": 270 },
+        "powered=false,igneous_type=basalt": { "model": "basalt_cobble_button", "x": 90 , "y": 270 },
+        "powered=false,igneous_type=komatiite": { "model": "komatiite_cobble_button", "x": 90 , "y": 270 },
+        "powered=false,igneous_type=dacite": { "model": "dacite_cobble_button", "x": 90 , "y": 270 },
+        "powered=true,igneous_type=red_granite": { "model": "red_granite_cobble_button_pressed", "x": 90 , "y": 270 },
+        "powered=true,igneous_type=black_granite": { "model": "black_granite_cobble_button_pressed", "x": 90 , "y": 270 },
+        "powered=true,igneous_type=rhyolite": { "model": "rhyolite_cobble_button_pressed", "x": 90 , "y": 270 },
+        "powered=true,igneous_type=andesite": { "model": "andesite_cobble_button_pressed", "x": 90 , "y": 270 },
+        "powered=true,igneous_type=gabbro": { "model": "gabbro_cobble_button_pressed", "x": 90 , "y": 270 },
+        "powered=true,igneous_type=basalt": { "model": "basalt_cobble_button_pressed", "x": 90 , "y": 270 },
+        "powered=true,igneous_type=komatiite": { "model": "komatiite_cobble_button_pressed", "x": 90 , "y": 270 },
+        "powered=true,igneous_type=dacite": { "model": "dacite_cobble_button_pressed", "x": 90 , "y": 270 }
+    }
+}

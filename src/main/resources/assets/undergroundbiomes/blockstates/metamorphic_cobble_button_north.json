@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "powered=false,metamorphic_type=gneiss": { "model": "gneiss_cobble_button", "x": 90 },
+        "powered=false,metamorphic_type=eclogite": { "model": "eclogite_cobble_button", "x": 90 },
+        "powered=false,metamorphic_type=marble": { "model": "marble_cobble_button", "x": 90 },
+        "powered=false,metamorphic_type=quartzite": { "model": "quartzite_cobble_button", "x": 90 },
+        "powered=false,metamorphic_type=blueschist": { "model": "blueschist_cobble_button", "x": 90 },
+        "powered=false,metamorphic_type=greenschist": { "model": "greenschist_cobble_button", "x": 90 },
+        "powered=false,metamorphic_type=soapstone": { "model": "soapstone_cobble_button", "x": 90 },
+        "powered=false,metamorphic_type=migmatite": { "model": "migmatite_cobble_button", "x": 90 },
+        "powered=true,metamorphic_type=gneiss": { "model": "gneiss_cobble_button", "x": 90 },
+        "powered=true,metamorphic_type=eclogite": { "model": "eclogite_cobble_button", "x": 90 },
+        "powered=true,metamorphic_type=marble": { "model": "marble_cobble_button", "x": 90 },
+        "powered=true,metamorphic_type=quartzite": { "model": "quartzite_cobble_button", "x": 90 },
+        "powered=true,metamorphic_type=blueschist": { "model": "blueschist_cobble_button", "x": 90 },
+        "powered=true,metamorphic_type=greenschist": { "model": "greenschist_cobble_button", "x": 90 },
+        "powered=true,metamorphic_type=soapstone": { "model": "soapstone_cobble_button", "x": 90 },
+        "powered=true,metamorphic_type=migmatite": { "model": "migmatite_cobble_button", "x": 90 }
+    }
+}

@@ -73,7 +73,7 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 		this.entry = entry;
 		this.facing = facing;
 
-		setDefaultState(this.blockState.getBaseState().withProperty(POWERED, Boolean.FALSE).withProperty(baseStone().getVariantProperty(), baseStone().getVariantEnum()[0]));
+		setDefaultState(this.blockState.getBaseState().withProperty(baseStone().getVariantProperty(), baseStone().getVariantEnum()[0]).withProperty(POWERED, Boolean.FALSE));
 		setTickRandomly(true);
 
 		name = entry.internal() + "_" + facing;
@@ -83,7 +83,7 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 
 	@Override
 	protected BlockState createBlockState() {
-		return new BlockState(this, new IProperty[] { POWERED, baseStone().getVariantProperty() });
+		return new BlockState(this, new IProperty[] { baseStone().getVariantProperty(), POWERED });
 	}
 
 	@Override
@@ -137,19 +137,20 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 
 	@Override
 	public void registerModel() {
-		for (int i = 0; i < baseStone().getNbVariants(); i++) {
-			ModelBakery.addVariantName(Item.getItemFromBlock(this), getModelName(i));
-			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(this), i, new ModelResourceLocation(getModelName(i)));
-		}
-		// StateMapperBase customStateMapper = new StateMapperBase() {
-		// @Override
-		// protected ModelResourceLocation getModelResourceLocation(IBlockState
-		// state) {
-		// int meta = getMetaFromState(state);
-		// return new ModelResourceLocation(getModelName(meta));
+		// for (int i = 0; i < baseStone().getNbVariants(); i++) {
+		// ModelBakery.addVariantName(Item.getItemFromBlock(this),
+		// getModelName(i));
+		// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(this),
+		// i, new ModelResourceLocation(getModelName(i), "inventory"));
 		// }
-		// };
-		// ModelLoader.setCustomStateMapper(this, customStateMapper);
+		StateMapperBase customStateMapper = new StateMapperBase() {
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				int meta = getMetaFromState(state);
+				return new ModelResourceLocation(getModelName(meta));
+			}
+		};
+		ModelLoader.setCustomStateMapper(this, customStateMapper);
 	}
 
 	/*
