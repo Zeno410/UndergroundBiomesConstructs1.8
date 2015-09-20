@@ -73,7 +73,7 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 		this.entry = entry;
 		this.facing = facing;
 
-		setDefaultState(this.blockState.getBaseState().withProperty(baseStone().getVariantProperty(), baseStone().getVariantEnum()[0]).withProperty(POWERED, Boolean.FALSE));
+		setDefaultState(this.blockState.getBaseState().withProperty(POWERED, Boolean.FALSE).withProperty(baseStone().getVariantProperty(), baseStone().getVariantEnum()[0]));
 		setTickRandomly(true);
 
 		name = entry.internal() + "_" + facing;
@@ -83,7 +83,7 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 
 	@Override
 	protected BlockState createBlockState() {
-		return new BlockState(this, new IProperty[] { baseStone().getVariantProperty(), POWERED });
+		return new BlockState(this, new IProperty[] { POWERED, baseStone().getVariantProperty() });
 	}
 
 	@Override
@@ -179,8 +179,11 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 
 	@Override
 	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
-		assert side == facing.getOpposite();
-		return worldIn.isSideSolid(pos.offset(side.getOpposite()), side, true);
+		// The item choose the correct orientation
+		return true;
+		// assert side == facing.getOpposite();
+		// return worldIn.isSideSolid(pos.offset(side.getOpposite()), side,
+		// true);
 	}
 
 	@Override
@@ -193,6 +196,14 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 		}
 	}
 
+	/**
+	 * Drop the bloc
+	 * 
+	 * @param worldIn
+	 * @param pos
+	 * @param state
+	 * @return true if the block was dropped
+	 */
 	private boolean checkForDrop(World worldIn, BlockPos pos, IBlockState state) {
 		if (!this.canPlaceBlockAt(worldIn, pos)) {
 			this.dropBlockAsItem(worldIn, pos, state, 0);
@@ -218,7 +229,7 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 		float f4 = 0.1875F;
 
 		switch (facing) {
-		case DOWN:
+		case WEST:
 			setBlockBounds(0.0F, 0.375F, 0.3125F, f2, 0.625F, 0.6875F);
 			break;
 		case EAST:
@@ -230,10 +241,10 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 		case SOUTH:
 			setBlockBounds(0.3125F, 0.375F, 1.0F - f2, 0.6875F, 0.625F, 1.0F);
 			break;
-		case UP:
+		case DOWN:
 			setBlockBounds(0.3125F, 0.0F, 0.375F, 0.6875F, 0.0F + f2, 0.625F);
 			break;
-		case WEST:
+		case UP:
 			setBlockBounds(0.3125F, 1.0F - f2, 0.375F, 0.6875F, 1.0F, 0.625F);
 			break;
 		}
@@ -241,11 +252,13 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (!((Boolean) state.getValue(POWERED)).booleanValue()) {
+		assert side == facing.getOpposite();
+		boolean alreadyActivated = ((Boolean) state.getValue(POWERED)).booleanValue();
+		if (!alreadyActivated) {
 			worldIn.setBlockState(pos, state.withProperty(POWERED, Boolean.TRUE), 3);
 			worldIn.markBlockRangeForRenderUpdate(pos, pos);
 			worldIn.playSoundEffect(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, "random.click", 0.3F, 0.6F);
-			notifyNeighbors(worldIn, pos, facing);
+			notifyNeighbors(worldIn, pos, side);
 			worldIn.scheduleUpdate(pos, this, tickRate(worldIn));
 		}
 		return true;

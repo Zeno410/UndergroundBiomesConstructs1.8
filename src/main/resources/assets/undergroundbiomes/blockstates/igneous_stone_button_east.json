@@ -1,20 +1,20 @@
 {
     "variants": {
-        "powered=false,igneous_type=red_granite": { "model": "red_granite_stone_button", "x": 90 , "y": 90 },
-        "powered=false,igneous_type=black_granite": { "model": "black_granite_stone_button", "x": 90 , "y": 90 },
-        "powered=false,igneous_type=rhyolite": { "model": "rhyolite_stone_button", "x": 90 , "y": 90 },
-        "powered=false,igneous_type=andesite": { "model": "andesite_stone_button", "x": 90 , "y": 90 },
-        "powered=false,igneous_type=gabbro": { "model": "gabbro_stone_button", "x": 90 , "y": 90 },
-        "powered=false,igneous_type=basalt": { "model": "basalt_stone_button", "x": 90 , "y": 90 },
-        "powered=false,igneous_type=komatiite": { "model": "komatiite_stone_button", "x": 90 , "y": 90 },
-        "powered=false,igneous_type=dacite": { "model": "dacite_stone_button", "x": 90 , "y": 90 },
-        "powered=true,igneous_type=red_granite": { "model": "red_granite_stone_button_pressed", "x": 90 , "y": 90 },
-        "powered=true,igneous_type=black_granite": { "model": "black_granite_stone_button_pressed", "x": 90 , "y": 90 },
-        "powered=true,igneous_type=rhyolite": { "model": "rhyolite_stone_button_pressed", "x": 90 , "y": 90 },
-        "powered=true,igneous_type=andesite": { "model": "andesite_stone_button_pressed", "x": 90 , "y": 90 },
-        "powered=true,igneous_type=gabbro": { "model": "gabbro_stone_button_pressed", "x": 90 , "y": 90 },
-        "powered=true,igneous_type=basalt": { "model": "basalt_stone_button_pressed", "x": 90 , "y": 90 },
-        "powered=true,igneous_type=komatiite": { "model": "komatiite_stone_button_pressed", "x": 90 , "y": 90 },
-        "powered=true,igneous_type=dacite": { "model": "dacite_stone_button_pressed", "x": 90 , "y": 90 }
+        "powered=false,igneous_type=red_granite": { "model": "undergroundbiomes:red_granite_stone_button", "x": 90 , "y": 90 },
+        "powered=false,igneous_type=black_granite": { "model": "undergroundbiomes:black_granite_stone_button", "x": 90 , "y": 90 },
+        "powered=false,igneous_type=rhyolite": { "model": "undergroundbiomes:rhyolite_stone_button", "x": 90 , "y": 90 },
+        "powered=false,igneous_type=andesite": { "model": "undergroundbiomes:andesite_stone_button", "x": 90 , "y": 90 },
+        "powered=false,igneous_type=gabbro": { "model": "undergroundbiomes:gabbro_stone_button", "x": 90 , "y": 90 },
+        "powered=false,igneous_type=basalt": { "model": "undergroundbiomes:basalt_stone_button", "x": 90 , "y": 90 },
+        "powered=false,igneous_type=komatiite": { "model": "undergroundbiomes:komatiite_stone_button", "x": 90 , "y": 90 },
+        "powered=false,igneous_type=dacite": { "model": "undergroundbiomes:dacite_stone_button", "x": 90 , "y": 90 },
+        "powered=true,igneous_type=red_granite": { "model": "undergroundbiomes:red_granite_stone_button_pressed", "x": 90 , "y": 90 },
+        "powered=true,igneous_type=black_granite": { "model": "undergroundbiomes:black_granite_stone_button_pressed", "x": 90 , "y": 90 },
+        "powered=true,igneous_type=rhyolite": { "model": "undergroundbiomes:rhyolite_stone_button_pressed", "x": 90 , "y": 90 },
+        "powered=true,igneous_type=andesite": { "model": "undergroundbiomes:andesite_stone_button_pressed", "x": 90 , "y": 90 },
+        "powered=true,igneous_type=gabbro": { "model": "undergroundbiomes:gabbro_stone_button_pressed", "x": 90 , "y": 90 },
+        "powered=true,igneous_type=basalt": { "model": "undergroundbiomes:basalt_stone_button_pressed", "x": 90 , "y": 90 },
+        "powered=true,igneous_type=komatiite": { "model": "undergroundbiomes:komatiite_stone_button_pressed", "x": 90 , "y": 90 },
+        "powered=true,igneous_type=dacite": { "model": "undergroundbiomes:dacite_stone_button_pressed", "x": 90 , "y": 90 }
     }
 }

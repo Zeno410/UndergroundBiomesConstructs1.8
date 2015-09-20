@@ -1,20 +1,20 @@
 {
     "variants": {
-        "powered=false,sedimentary_type=limestone": { "model": "limestone_stone_button", "x": 90, "y": 270 },
-        "powered=false,sedimentary_type=chalk": { "model": "chalk_stone_button", "x": 90, "y": 270 },
-        "powered=false,sedimentary_type=shale": { "model": "shale_stone_button", "x": 90, "y": 270 },
-        "powered=false,sedimentary_type=siltstone": { "model": "siltstone_stone_button", "x": 90, "y": 270 },
-        "powered=false,sedimentary_type=lignite": { "model": "lignite_stone_button", "x": 90, "y": 270 },
-        "powered=false,sedimentary_type=dolomite": { "model": "dolomite_stone_button", "x": 90, "y": 270 },
-        "powered=false,sedimentary_type=greywacke": { "model": "greywacke_stone_button", "x": 90, "y": 270 },
-        "powered=false,sedimentary_type=chert": { "model": "chert_stone_button", "x": 90, "y": 270 },
-        "powered=true,sedimentary_type=limestone": { "model": "limestone_stone_button", "x": 90, "y": 270 },
-        "powered=true,sedimentary_type=chalk": { "model": "chalk_stone_button", "x": 90, "y": 270 },
-        "powered=true,sedimentary_type=shale": { "model": "shale_stone_button", "x": 90, "y": 270 },
-        "powered=true,sedimentary_type=siltstone": { "model": "siltstone_stone_button", "x": 90, "y": 270 },
-        "powered=true,sedimentary_type=lignite": { "model": "lignite_stone_button", "x": 90, "y": 270 },
-        "powered=true,sedimentary_type=dolomite": { "model": "dolomite_stone_button", "x": 90, "y": 270 },
-        "powered=true,sedimentary_type=greywacke": { "model": "greywacke_stone_button", "x": 90, "y": 270 },
-        "powered=true,sedimentary_type=chert": { "model": "chert_stone_button", "x": 90, "y": 270 }
+        "powered=false,sedimentary_type=limestone": { "model": "undergroundbiomes:limestone_stone_button", "x": 90, "y": 270 },
+        "powered=false,sedimentary_type=chalk": { "model": "undergroundbiomes:chalk_stone_button", "x": 90, "y": 270 },
+        "powered=false,sedimentary_type=shale": { "model": "undergroundbiomes:shale_stone_button", "x": 90, "y": 270 },
+        "powered=false,sedimentary_type=siltstone": { "model": "undergroundbiomes:siltstone_stone_button", "x": 90, "y": 270 },
+        "powered=false,sedimentary_type=lignite": { "model": "undergroundbiomes:lignite_stone_button", "x": 90, "y": 270 },
+        "powered=false,sedimentary_type=dolomite": { "model": "undergroundbiomes:dolomite_stone_button", "x": 90, "y": 270 },
+        "powered=false,sedimentary_type=greywacke": { "model": "undergroundbiomes:greywacke_stone_button", "x": 90, "y": 270 },
+        "powered=false,sedimentary_type=chert": { "model": "undergroundbiomes:chert_stone_button", "x": 90, "y": 270 },
+        "powered=true,sedimentary_type=limestone": { "model": "undergroundbiomes:limestone_stone_button_pressed", "x": 90, "y": 270 },
+        "powered=true,sedimentary_type=chalk": { "model": "undergroundbiomes:chalk_stone_button_pressed", "x": 90, "y": 270 },
+        "powered=true,sedimentary_type=shale": { "model": "undergroundbiomes:shale_stone_button_pressed", "x": 90, "y": 270 },
+        "powered=true,sedimentary_type=siltstone": { "model": "undergroundbiomes:siltstone_stone_button_pressed", "x": 90, "y": 270 },
+        "powered=true,sedimentary_type=lignite": { "model": "undergroundbiomes:lignite_stone_button_pressed", "x": 90, "y": 270 },
+        "powered=true,sedimentary_type=dolomite": { "model": "undergroundbiomes:dolomite_stone_button_pressed", "x": 90, "y": 270 },
+        "powered=true,sedimentary_type=greywacke": { "model": "undergroundbiomes:greywacke_stone_button_pressed", "x": 90, "y": 270 },
+        "powered=true,sedimentary_type=chert": { "model": "undergroundbiomes:chert_stone_button_pressed", "x": 90, "y": 270 }
     }
 }
