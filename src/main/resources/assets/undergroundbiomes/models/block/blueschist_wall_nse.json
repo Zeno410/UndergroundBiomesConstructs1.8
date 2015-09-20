@@ -1,0 +1,7 @@
+{
+    "parent": "block/wall_nse",
+    "textures": {
+        "wall": "undergroundbiomes:blocks/blueschist_cobble"
+    }
+}
+

@@ -1,20 +1,20 @@
 {
     "variants": {
-        "powered=false,igneous_type=red_granite": { "model": "undergroundbiomes:red_granite_cobble_button" },
-        "powered=false,igneous_type=black_granite": { "model": "undergroundbiomes:black_granite_cobble_button" },
-        "powered=false,igneous_type=rhyolite": { "model": "undergroundbiomes:rhyolite_cobble_button" },
-        "powered=false,igneous_type=andesite": { "model": "undergroundbiomes:andesite_cobble_button" },
-        "powered=false,igneous_type=gabbro": { "model": "undergroundbiomes:gabbro_cobble_button" },
-        "powered=false,igneous_type=basalt": { "model": "undergroundbiomes:basalt_cobble_button" },
-        "powered=false,igneous_type=komatiite": { "model": "undergroundbiomes:komatiite_cobble_button" },
-        "powered=false,igneous_type=dacite": { "model": "undergroundbiomes:dacite_cobble_button" },
-        "powered=true,igneous_type=red_granite": { "model": "undergroundbiomes:red_granite_cobble_button_pressed" },
-        "powered=true,igneous_type=black_granite": { "model": "undergroundbiomes:black_granite_cobble_button_pressed" },
-        "powered=true,igneous_type=rhyolite": { "model": "undergroundbiomes:rhyolite_cobble_button_pressed" },
-        "powered=true,igneous_type=andesite": { "model": "undergroundbiomes:andesite_cobble_button_pressed" },
-        "powered=true,igneous_type=gabbro": { "model": "undergroundbiomes:gabbro_cobble_button_pressed" },
-        "powered=true,igneous_type=basalt": { "model": "undergroundbiomes:basalt_cobble_button_pressed" },
-        "powered=true,igneous_type=komatiite": { "model": "undergroundbiomes:komatiite_cobble_button_pressed" },
-        "powered=true,igneous_type=dacite": { "model": "undergroundbiomes:dacite_cobble_button_pressed" }
+        "igneous_type=red_granite,powered=false": { "model": "undergroundbiomes:red_granite_cobble_button" },
+        "igneous_type=black_granite,powered=false": { "model": "undergroundbiomes:black_granite_cobble_button" },
+        "igneous_type=rhyolite,powered=false": { "model": "undergroundbiomes:rhyolite_cobble_button" },
+        "igneous_type=andesite,powered=false": { "model": "undergroundbiomes:andesite_cobble_button" },
+        "igneous_type=gabbro,powered=false": { "model": "undergroundbiomes:gabbro_cobble_button" },
+        "igneous_type=basalt,powered=false": { "model": "undergroundbiomes:basalt_cobble_button" },
+        "igneous_type=komatiite,powered=false": { "model": "undergroundbiomes:komatiite_cobble_button" },
+        "igneous_type=dacite,powered=false": { "model": "undergroundbiomes:dacite_cobble_button" },
+        "igneous_type=red_granite,powered=true": { "model": "undergroundbiomes:red_granite_cobble_button_pressed" },
+        "igneous_type=black_granite,powered=true": { "model": "undergroundbiomes:black_granite_cobble_button_pressed" },
+        "igneous_type=rhyolite,powered=true": { "model": "undergroundbiomes:rhyolite_cobble_button_pressed" },
+        "igneous_type=andesite,powered=true": { "model": "undergroundbiomes:andesite_cobble_button_pressed" },
+        "igneous_type=gabbro,powered=true": { "model": "undergroundbiomes:gabbro_cobble_button_pressed" },
+        "igneous_type=basalt,powered=true": { "model": "undergroundbiomes:basalt_cobble_button_pressed" },
+        "igneous_type=komatiite,powered=true": { "model": "undergroundbiomes:komatiite_cobble_button_pressed" },
+        "igneous_type=dacite,powered=true": { "model": "undergroundbiomes:dacite_cobble_button_pressed" }
     }
 }

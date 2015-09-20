@@ -50,6 +50,13 @@ public final class UBEntries {
 	public static final ButtonEntry SEDIMENTARY_STONE_BUTTON = new ButtonEntry(SEDIMENTARY_STONE);
 
 	/*
+	 * ----- Walls -----
+	 */
+
+	public static final BlockEntry IGNEOUS_WALL = new BlockEntry("igneous_wall");
+	public static final BlockEntry METAMORPHIC_WALL = new BlockEntry("metamorphic_wall");
+
+	/*
 	 * 
 	 */
 

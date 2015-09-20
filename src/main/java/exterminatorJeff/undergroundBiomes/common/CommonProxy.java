@@ -20,6 +20,8 @@ import exterminatorJeff.undergroundBiomes.common.block.constructs.UBButtonIgneou
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBButtonMetamorphic;
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBButtonMetamorphicCobble;
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBButtonSedimentary;
+import exterminatorJeff.undergroundBiomes.common.block.constructs.UBWallIgneous;
+import exterminatorJeff.undergroundBiomes.common.block.constructs.UBWallMetamorphic;
 import exterminatorJeff.undergroundBiomes.common.block.slab.UBIgneousBrickSlabDouble;
 import exterminatorJeff.undergroundBiomes.common.block.slab.UBIgneousBrickSlabHalf;
 import exterminatorJeff.undergroundBiomes.common.block.slab.UBIgneousCobbleSlabDouble;
@@ -95,7 +97,7 @@ public class CommonProxy {
 		UBEntries.METAMORPHIC_COBBLE_SLAB
 				.register(new UBSlabPair(new UBMetamorphicCobbleSlabHalf(UBEntries.METAMORPHIC_COBBLE_SLAB), new UBMetamorphicCobbleSlabDouble(UBEntries.METAMORPHIC_COBBLE_SLAB)));
 		UBEntries.SEDIMENTARY_STONE_SLAB.register(new UBSlabPair(new UBSedimentaryStoneSlabHalf(UBEntries.SEDIMENTARY_STONE_SLAB), new UBSedimentaryStoneSlabDouble(UBEntries.SEDIMENTARY_STONE_SLAB)));
-		// Constructs
+		// Buttons
 		UBEntries.IGNEOUS_STONE_BUTTON.register(new UBButtonGroup(UBEntries.IGNEOUS_STONE_BUTTON, new UBButtonIgneous(UBEntries.IGNEOUS_STONE_BUTTON, EnumFacing.DOWN),
 				new UBButtonIgneous(UBEntries.IGNEOUS_STONE_BUTTON, EnumFacing.EAST), new UBButtonIgneous(UBEntries.IGNEOUS_STONE_BUTTON, EnumFacing.NORTH),
 				new UBButtonIgneous(UBEntries.IGNEOUS_STONE_BUTTON, EnumFacing.SOUTH), new UBButtonIgneous(UBEntries.IGNEOUS_STONE_BUTTON, EnumFacing.UP),
@@ -116,6 +118,9 @@ public class CommonProxy {
 				new UBButtonSedimentary(UBEntries.SEDIMENTARY_STONE_BUTTON, EnumFacing.EAST), new UBButtonSedimentary(UBEntries.SEDIMENTARY_STONE_BUTTON, EnumFacing.NORTH),
 				new UBButtonSedimentary(UBEntries.SEDIMENTARY_STONE_BUTTON, EnumFacing.SOUTH), new UBButtonSedimentary(UBEntries.SEDIMENTARY_STONE_BUTTON, EnumFacing.UP),
 				new UBButtonSedimentary(UBEntries.SEDIMENTARY_STONE_BUTTON, EnumFacing.WEST)));
+		// Walls
+		UBEntries.IGNEOUS_WALL.register(new UBWallIgneous(UBEntries.IGNEOUS_WALL));
+		UBEntries.METAMORPHIC_WALL.register(new UBWallMetamorphic(UBEntries.METAMORPHIC_WALL));
 	}
 
 	private final void createItems() {

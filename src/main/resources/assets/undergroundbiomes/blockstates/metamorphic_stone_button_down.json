@@ -1,20 +1,20 @@
 {
     "variants": {
-        "powered=false,metamorphic_type=gneiss": { "model": "undergroundbiomes:gneiss_stone_button", "x": 180 },
-        "powered=false,metamorphic_type=eclogite": { "model": "undergroundbiomes:eclogite_stone_button", "x": 180 },
-        "powered=false,metamorphic_type=marble": { "model": "undergroundbiomes:marble_stone_button", "x": 180 },
-        "powered=false,metamorphic_type=quartzite": { "model": "undergroundbiomes:quartzite_stone_button", "x": 180 },
-        "powered=false,metamorphic_type=blueschist": { "model": "undergroundbiomes:blueschist_stone_button", "x": 180 },
-        "powered=false,metamorphic_type=greenschist": { "model": "undergroundbiomes:greenschist_stone_button", "x": 180 },
-        "powered=false,metamorphic_type=soapstone": { "model": "undergroundbiomes:soapstone_stone_button", "x": 180 },
-        "powered=false,metamorphic_type=migmatite": { "model": "undergroundbiomes:migmatite_stone_button", "x": 180 },
-        "powered=true,metamorphic_type=gneiss": { "model": "undergroundbiomes:gneiss_stone_button_pressed", "x": 180 },
-        "powered=true,metamorphic_type=eclogite": { "model": "undergroundbiomes:eclogite_stone_button_pressed", "x": 180 },
-        "powered=true,metamorphic_type=marble": { "model": "undergroundbiomes:marble_stone_button_pressed", "x": 180 },
-        "powered=true,metamorphic_type=quartzite": { "model": "undergroundbiomes:quartzite_stone_button_pressed", "x": 180 },
-        "powered=true,metamorphic_type=blueschist": { "model": "undergroundbiomes:blueschist_stone_button_pressed", "x": 180 },
-        "powered=true,metamorphic_type=greenschist": { "model": "undergroundbiomes:greenschist_stone_button_pressed", "x": 180 },
-        "powered=true,metamorphic_type=soapstone": { "model": "undergroundbiomes:soapstone_stone_button_pressed", "x": 180 },
-        "powered=true,metamorphic_type=migmatite": { "model": "undergroundbiomes:migmatite_stone_button_pressed", "x": 180 }
+        "metamorphic_type=gneiss,powered=false": { "model": "undergroundbiomes:gneiss_stone_button", "x": 180 },
+        "metamorphic_type=eclogite,powered=false": { "model": "undergroundbiomes:eclogite_stone_button", "x": 180 },
+        "metamorphic_type=marble,powered=false": { "model": "undergroundbiomes:marble_stone_button", "x": 180 },
+        "metamorphic_type=quartzite,powered=false": { "model": "undergroundbiomes:quartzite_stone_button", "x": 180 },
+        "metamorphic_type=blueschist,powered=false": { "model": "undergroundbiomes:blueschist_stone_button", "x": 180 },
+        "metamorphic_type=greenschist,powered=false": { "model": "undergroundbiomes:greenschist_stone_button", "x": 180 },
+        "metamorphic_type=soapstone,powered=false": { "model": "undergroundbiomes:soapstone_stone_button", "x": 180 },
+        "metamorphic_type=migmatite,powered=false": { "model": "undergroundbiomes:migmatite_stone_button", "x": 180 },
+        "metamorphic_type=gneiss,powered=true": { "model": "undergroundbiomes:gneiss_stone_button_pressed", "x": 180 },
+        "metamorphic_type=eclogite,powered=true": { "model": "undergroundbiomes:eclogite_stone_button_pressed", "x": 180 },
+        "metamorphic_type=marble,powered=true": { "model": "undergroundbiomes:marble_stone_button_pressed", "x": 180 },
+        "metamorphic_type=quartzite,powered=true": { "model": "undergroundbiomes:quartzite_stone_button_pressed", "x": 180 },
+        "metamorphic_type=blueschist,powered=true": { "model": "undergroundbiomes:blueschist_stone_button_pressed", "x": 180 },
+        "metamorphic_type=greenschist,powered=true": { "model": "undergroundbiomes:greenschist_stone_button_pressed", "x": 180 },
+        "metamorphic_type=soapstone,powered=true": { "model": "undergroundbiomes:soapstone_stone_button_pressed", "x": 180 },
+        "metamorphic_type=migmatite,powered=true": { "model": "undergroundbiomes:migmatite_stone_button_pressed", "x": 180 }
     }
 }

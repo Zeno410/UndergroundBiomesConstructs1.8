@@ -26,6 +26,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -53,7 +54,6 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 	 */
 
 	private final ButtonEntry entry;
-
 	private final EnumFacing facing;
 
 	@Override
@@ -73,11 +73,10 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 		this.entry = entry;
 		this.facing = facing;
 
-		setDefaultState(this.blockState.getBaseState().withProperty(POWERED, Boolean.FALSE).withProperty(baseStone().getVariantProperty(), baseStone().getVariantEnum()[0]));
+		setDefaultState(blockState.getBaseState().withProperty(POWERED, Boolean.FALSE).withProperty(baseStone().getVariantProperty(), baseStone().getVariantEnum()[0]));
 		setTickRandomly(true);
 
-		name = entry.internal() + "_" + facing;
-
+		name = this.entry.internal() + "_" + facing;
 		setUnlocalizedName(name);
 	}
 
@@ -97,10 +96,8 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		int i = baseStone().getMetaFromState(state);
-
 		if (((Boolean) state.getValue(POWERED)).booleanValue())
 			i |= 8;
-
 		return i;
 	}
 
@@ -111,8 +108,14 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 
 	@Override
 	public int damageDropped(IBlockState state) {
-		// There is no powered item
+		// There is no powered button item
 		return getMetaFromState(state) & 7;
+	}
+
+	@Override
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos) {
+		IBlockState state = world.getBlockState(pos);
+		return new ItemStack(entry.getAssociatedItem(), 1, state.getBlock().getMetaFromState(state));
 	}
 
 	/*
@@ -125,6 +128,25 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 	}
 
 	@Override
+	public void registerModel() {
+		// for (int i = 0; i < baseStone().getNbVariants(); i++) {
+		// ModelBakery.addVariantName(Item.getItemFromBlock(this),
+		// getModelName(i));
+		// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(this),
+		// i, new ModelResourceLocation(getModelName(i), "inventory"));
+		// }
+		// StateMapperBase customStateMapper = new StateMapperBase() {
+		// @Override
+		// protected ModelResourceLocation getModelResourceLocation(IBlockState
+		// state) {
+		// int meta = getMetaFromState(state);
+		// return new ModelResourceLocation(getModelName(meta));
+		// }
+		// };
+		// ModelLoader.setCustomStateMapper(this, customStateMapper);
+	}
+
+	@Override
 	public String getVariantName(int meta) {
 		// Metadatas 8-15 have the same name as 0-7
 		return baseStone().getVariantName(meta & 7) + "_" + baseStone().getStoneStyle();
@@ -133,24 +155,6 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 	@Override
 	public String getModelName(int meta) {
 		return UndergroundBiomes.MODID + ":" + getVariantName(meta) + "_button";
-	}
-
-	@Override
-	public void registerModel() {
-		// for (int i = 0; i < baseStone().getNbVariants(); i++) {
-		// ModelBakery.addVariantName(Item.getItemFromBlock(this),
-		// getModelName(i));
-		// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(this),
-		// i, new ModelResourceLocation(getModelName(i), "inventory"));
-		// }
-		StateMapperBase customStateMapper = new StateMapperBase() {
-			@Override
-			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-				int meta = getMetaFromState(state);
-				return new ModelResourceLocation(getModelName(meta));
-			}
-		};
-		ModelLoader.setCustomStateMapper(this, customStateMapper);
 	}
 
 	/*
@@ -180,10 +184,14 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 	@Override
 	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
 		// The item choose the correct orientation
+		assert side == facing;
 		return true;
-		// assert side == facing.getOpposite();
-		// return worldIn.isSideSolid(pos.offset(side.getOpposite()), side,
-		// true);
+	}
+
+	@Override
+	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
+		UBButton button = (UBButton) worldIn.getBlockState(pos).getBlock();
+		return worldIn.isSideSolid(pos.offset(button.getSide().getOpposite()), button.getSide(), true);
 	}
 
 	@Override
@@ -196,14 +204,6 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 		}
 	}
 
-	/**
-	 * Drop the bloc
-	 * 
-	 * @param worldIn
-	 * @param pos
-	 * @param state
-	 * @return true if the block was dropped
-	 */
 	private boolean checkForDrop(World worldIn, BlockPos pos, IBlockState state) {
 		if (!this.canPlaceBlockAt(worldIn, pos)) {
 			this.dropBlockAsItem(worldIn, pos, state, 0);
@@ -229,22 +229,22 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 		float f4 = 0.1875F;
 
 		switch (facing) {
-		case WEST:
+		case EAST:
 			setBlockBounds(0.0F, 0.375F, 0.3125F, f2, 0.625F, 0.6875F);
 			break;
-		case EAST:
+		case WEST:
 			setBlockBounds(1.0F - f2, 0.375F, 0.3125F, 1.0F, 0.625F, 0.6875F);
 			break;
-		case NORTH:
+		case SOUTH:
 			setBlockBounds(0.3125F, 0.375F, 0.0F, 0.6875F, 0.625F, f2);
 			break;
-		case SOUTH:
+		case NORTH:
 			setBlockBounds(0.3125F, 0.375F, 1.0F - f2, 0.6875F, 0.625F, 1.0F);
 			break;
-		case DOWN:
+		case UP:
 			setBlockBounds(0.3125F, 0.0F, 0.375F, 0.6875F, 0.0F + f2, 0.625F);
 			break;
-		case UP:
+		case DOWN:
 			setBlockBounds(0.3125F, 1.0F - f2, 0.375F, 0.6875F, 1.0F, 0.625F);
 			break;
 		}
@@ -252,13 +252,12 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
-		assert side == facing.getOpposite();
 		boolean alreadyActivated = ((Boolean) state.getValue(POWERED)).booleanValue();
 		if (!alreadyActivated) {
 			worldIn.setBlockState(pos, state.withProperty(POWERED, Boolean.TRUE), 3);
 			worldIn.markBlockRangeForRenderUpdate(pos, pos);
 			worldIn.playSoundEffect(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, "random.click", 0.3F, 0.6F);
-			notifyNeighbors(worldIn, pos, side);
+			notifyNeighbors(worldIn, pos, facing);
 			worldIn.scheduleUpdate(pos, this, tickRate(worldIn));
 		}
 		return true;
@@ -289,6 +288,7 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 
 	@Override
 	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random random) {
+		// Do nothing
 	}
 
 	@Override
@@ -363,7 +363,7 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 		@Override
 		public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
 			Block block = worldIn.getBlockState(pos).getBlock();
-			Block blockButton = entry.getBlock(side.getOpposite());
+			Block blockButton = entry.getBlock(side);
 
 			stack = new ItemStack(blockButton, 1, playerIn.getHeldItem().getMetadata());
 

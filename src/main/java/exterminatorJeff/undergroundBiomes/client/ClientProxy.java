@@ -84,6 +84,9 @@ public class ClientProxy extends CommonProxy {
 		UBEntries.METAMORPHIC_STONE_BUTTON.registerModel();
 		UBEntries.METAMORPHIC_COBBLE_BUTTON.registerModel();
 		UBEntries.SEDIMENTARY_STONE_BUTTON.registerModel();
+		// Walls
+		UBEntries.IGNEOUS_WALL.registerModel();
+		UBEntries.METAMORPHIC_WALL.registerModel();
 	}
 
 	private final void registerItemsModels() {

@@ -1,0 +1,7 @@
+{
+    "parent": "block/wall_nsew",
+    "textures": {
+        "wall": "undergroundbiomes:blocks/quartzite_cobble"
+    }
+}
+
