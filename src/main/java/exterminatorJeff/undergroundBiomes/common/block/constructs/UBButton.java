@@ -1,12 +1,9 @@
 package exterminatorJeff.undergroundBiomes.common.block.constructs;
 
-import java.util.List;
 import java.util.Random;
 
 import exterminatorJeff.undergroundBiomes.api.ButtonEntry;
-import exterminatorJeff.undergroundBiomes.api.Variable;
-import exterminatorJeff.undergroundBiomes.common.UBCreativeTab;
-import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
+import exterminatorJeff.undergroundBiomes.api.Registrable;
 import exterminatorJeff.undergroundBiomes.common.block.UBStone;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -14,12 +11,6 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.statemap.StateMapperBase;
-import net.minecraft.client.resources.model.ModelBakery;
-import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -27,10 +18,8 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 // TODO Add the possibility to deactivate cobble and/or sedimentary button
@@ -45,7 +34,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  * @author Spooky4672
  *
  */
-public abstract class UBButton extends Block implements SidedBlock, Variable {
+public abstract class UBButton extends Block implements OrientedBlock, Registrable {
 
 	public static final PropertyBool POWERED = PropertyBool.create("powered");
 
@@ -57,7 +46,7 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 	private final EnumFacing facing;
 
 	@Override
-	public EnumFacing getSide() {
+	public EnumFacing getFacing() {
 		return facing;
 	}
 
@@ -76,7 +65,7 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 		setDefaultState(blockState.getBaseState().withProperty(POWERED, Boolean.FALSE).withProperty(baseStone().getVariantProperty(), baseStone().getVariantEnum()[0]));
 		setTickRandomly(true);
 
-		name = this.entry.internal() + "_" + facing;
+		name = entry.internal(facing);
 		setUnlocalizedName(name);
 	}
 
@@ -129,32 +118,7 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 
 	@Override
 	public void registerModel() {
-		// for (int i = 0; i < baseStone().getNbVariants(); i++) {
-		// ModelBakery.addVariantName(Item.getItemFromBlock(this),
-		// getModelName(i));
-		// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(this),
-		// i, new ModelResourceLocation(getModelName(i), "inventory"));
-		// }
-		// StateMapperBase customStateMapper = new StateMapperBase() {
-		// @Override
-		// protected ModelResourceLocation getModelResourceLocation(IBlockState
-		// state) {
-		// int meta = getMetaFromState(state);
-		// return new ModelResourceLocation(getModelName(meta));
-		// }
-		// };
-		// ModelLoader.setCustomStateMapper(this, customStateMapper);
-	}
-
-	@Override
-	public String getVariantName(int meta) {
-		// Metadatas 8-15 have the same name as 0-7
-		return baseStone().getVariantName(meta & 7) + "_" + baseStone().getStoneStyle();
-	}
-
-	@Override
-	public String getModelName(int meta) {
-		return UndergroundBiomes.MODID + ":" + getVariantName(meta) + "_button";
+		// No need
 	}
 
 	/*
@@ -191,7 +155,7 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
 		UBButton button = (UBButton) worldIn.getBlockState(pos).getBlock();
-		return worldIn.isSideSolid(pos.offset(button.getSide().getOpposite()), button.getSide(), true);
+		return worldIn.isSideSolid(pos.offset(button.getFacing().getOpposite()), button.getFacing(), true);
 	}
 
 	@Override
@@ -314,126 +278,6 @@ public abstract class UBButton extends Block implements SidedBlock, Variable {
 	private void notifyNeighbors(World worldIn, BlockPos pos, EnumFacing facing) {
 		worldIn.notifyNeighborsOfStateChange(pos, this);
 		worldIn.notifyNeighborsOfStateChange(pos.offset(facing.getOpposite()), this);
-	}
-
-	/**
-	 * 
-	 *
-	 */
-	public static class UBButtonItem extends Item implements Variable {
-
-		private final UBStone baseStone;
-		private final ButtonEntry entry;
-
-		public UBButtonItem(UBStone baseStone, ButtonEntry entry) {
-			setMaxDamage(0);
-			setHasSubtypes(true);
-			this.baseStone = baseStone;
-			this.entry = entry;
-
-			setUnlocalizedName(entry.internal());
-			setCreativeTab(UBCreativeTab.UB_BLOCKS_TAB);
-		}
-
-		@SuppressWarnings({ "rawtypes", "unchecked" })
-		@Override
-		public void getSubItems(Item itemIn, CreativeTabs tab, List subItems) {
-			for (int i = 0; i < baseStone.getNbVariants(); i++) {
-				subItems.add(new ItemStack(itemIn, 1, i));
-			}
-		}
-
-		@Override
-		public int getMetadata(int meta) {
-			return meta;
-		}
-
-		@Override
-		public String getUnlocalizedName(ItemStack stack) {
-			return super.getUnlocalizedName(stack) + "." + baseStone.getVariantName(stack.getMetadata());
-		}
-
-		@Override
-		public String getItemStackDisplayName(ItemStack stack) {
-			String stoneLocalName = StatCollector.translateToLocal(baseStone.getUnlocalizedName() + "." + baseStone.getVariantName(stack.getMetadata() & 7) + ".name").trim();
-			// TODO Translate "button"
-			return stoneLocalName + " button";
-		}
-
-		@Override
-		public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
-			Block block = worldIn.getBlockState(pos).getBlock();
-			Block blockButton = entry.getBlock(side);
-
-			stack = new ItemStack(blockButton, 1, playerIn.getHeldItem().getMetadata());
-
-			if (!block.isReplaceable(worldIn, pos))
-				pos = pos.offset(side);
-
-			if (stack.stackSize == 0) {
-				return false;
-			} else if (!playerIn.canPlayerEdit(pos, side, stack)) {
-				return false;
-			} else if (pos.getY() == 255 && blockButton.getMaterial().isSolid()) {
-				return false;
-			} else if (worldIn.canBlockBePlaced(blockButton, pos, false, side, (Entity) null, stack)) {
-				int meta = getMetadata(stack.getMetadata());
-				IBlockState state = blockButton.onBlockPlaced(worldIn, pos, side, hitX, hitY, hitZ, meta, playerIn);
-
-				if (placeBlockAt(stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ, state)) {
-					worldIn.playSoundEffect(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, blockButton.stepSound.getPlaceSound(), (blockButton.stepSound.getVolume() + 1.0F) / 2.0F,
-							blockButton.stepSound.getFrequency() * 0.8F);
-					--stack.stackSize;
-				}
-
-				return true;
-			} else {
-				return false;
-			}
-		}
-
-		public boolean placeBlockAt(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, IBlockState newState) {
-			if (!world.setBlockState(pos, newState, 3))
-				return false;
-
-			IBlockState state = world.getBlockState(pos);
-			Block blockButton = entry.getBlock(side);
-
-			if (state.getBlock() == blockButton) {
-				// ItemBlock.setTileEntityNBT(world, pos, stack, player);
-				blockButton.onBlockPlacedBy(world, pos, state, player, stack);
-			}
-
-			return true;
-		}
-
-		@Override
-		public void register() {
-			GameRegistry.registerItem(this, entry.internal());
-		}
-
-		@Override
-		public void registerModel() {
-			for (int i = 0; i < baseStone.getNbVariants(); i++) {
-				ModelBakery.addVariantName(this, getModelName(i));
-				Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(this, i, new ModelResourceLocation(getModelName(i), "inventory"));
-			}
-		}
-
-		/**
-		 * Example : andesite_cobble
-		 */
-		@Override
-		public String getVariantName(int meta) {
-			// Metadatas 8-15 have the same name as 0-7
-			return baseStone.getVariantName(meta & 7) + "_" + baseStone.getStoneStyle();
-		}
-
-		@Override
-		public String getModelName(int meta) {
-			return UndergroundBiomes.MODID + ":" + getVariantName(meta) + "_button";
-		}
-
 	}
 
 }

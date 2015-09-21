@@ -3,12 +3,12 @@ package exterminatorJeff.undergroundBiomes.common.block.constructs;
 import net.minecraft.util.EnumFacing;
 
 /**
- * A block that implements {@link SidedBlock} has one instance per side<br/>
+ * A block that implements {@link OrientedBlock} has one instance per facing<br/>
  * 
  * @author Spooky4672
  *
  */
-public interface SidedBlock {
+public interface OrientedBlock {
 
 	/**
 	 * Facing for the inventory item
@@ -19,6 +19,6 @@ public interface SidedBlock {
 	 * 
 	 * @return
 	 */
-	public EnumFacing getSide();
+	public EnumFacing getFacing();
 
 }

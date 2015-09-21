@@ -2,15 +2,15 @@ package exterminatorJeff.undergroundBiomes.api;
 
 import exterminatorJeff.undergroundBiomes.common.block.UBStone;
 
-public class ButtonEntry extends OrientedBlockEntry {
+public class StairsEntry extends OrientedBlockEntry {
 
 	/**
 	 * 
 	 * @param reference
 	 *            : The {@link UBStone} reference
 	 */
-	public ButtonEntry(UBEntry reference) {
-		super(reference.internal() + "_button");
+	public StairsEntry(UBEntry reference) {
+		super(reference.internal() + "_stairs");
 	}
 
 }

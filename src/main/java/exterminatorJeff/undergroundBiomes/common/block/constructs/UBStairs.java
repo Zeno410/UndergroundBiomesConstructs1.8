@@ -2,8 +2,8 @@ package exterminatorJeff.undergroundBiomes.common.block.constructs;
 
 import java.util.Random;
 
-import exterminatorJeff.undergroundBiomes.api.UBEntry;
-import exterminatorJeff.undergroundBiomes.api.Variable;
+import exterminatorJeff.undergroundBiomes.api.Registrable;
+import exterminatorJeff.undergroundBiomes.api.StairsEntry;
 import exterminatorJeff.undergroundBiomes.common.block.UBStone;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
@@ -31,13 +31,13 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  * @author Spooky4672
  *
  */
-public abstract class UBStairs extends Block implements SidedBlock, Variable {
+public abstract class UBStairs extends Block implements OrientedBlock, Registrable {
 
-	private final UBEntry entry;
+	private final StairsEntry entry;
 	private final EnumFacing facing;
 
 	@Override
-	public EnumFacing getSide() {
+	public EnumFacing getFacing() {
 		return facing;
 	}
 
@@ -48,7 +48,7 @@ public abstract class UBStairs extends Block implements SidedBlock, Variable {
 	 */
 	private final String name;
 
-	public UBStairs(UBEntry entry, EnumFacing facing) {
+	public UBStairs(StairsEntry entry, EnumFacing facing) {
 		super(Material.rock);
 		this.entry = entry;
 		this.facing = facing;
@@ -56,7 +56,7 @@ public abstract class UBStairs extends Block implements SidedBlock, Variable {
 		setDefaultState(blockState.getBaseState().withProperty(BlockStairs.HALF, EnumHalf.BOTTOM).withProperty(BlockStairs.SHAPE, EnumShape.STRAIGHT).withProperty(baseStone().getVariantProperty(),
 				baseStone().getVariantEnum()[0]));
 
-		name = entry.internal() + "_" + facing;
+		name = entry.internal(facing);
 		setUnlocalizedName(name);
 	}
 
@@ -109,25 +109,13 @@ public abstract class UBStairs extends Block implements SidedBlock, Variable {
 
 	@Override
 	public void registerModel() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public String getVariantName(int meta) {
-		return baseStone().getVariantName(meta & 7) + "_" + baseStone().getStoneStyle();
-	}
-
-	@Override
-	public String getModelName(int meta) {
-		// TODO Auto-generated method stub
-		return null;
+		// No need
 	}
 
 	/*
 	 * Copied from BlockStairs class
 	 */
-	
+
 	@Override
 	public boolean isOpaqueCube() {
 		return false;
