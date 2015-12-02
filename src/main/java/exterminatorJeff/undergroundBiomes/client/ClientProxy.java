@@ -24,7 +24,7 @@ public class ClientProxy extends CommonProxy {
 	public void preInit(FMLPreInitializationEvent e) {
 		super.preInit(e);
 
-		((UBOreOverlaysRegisrty) UBAPIHook.UB_ORES_OVERLAYS_REGISTRY).addVanillaOverlays();
+		((UBOreOverlaysRegistry) UBAPIHook.UB_ORES_OVERLAYS_REGISTRY).addVanillaOverlays();
 		MinecraftForge.EVENT_BUS.register(new TexturesRegistrationHandler());
 
 		StateMapperBase customStateMapper = new StateMapperBase() {
@@ -87,6 +87,12 @@ public class ClientProxy extends CommonProxy {
 		// Walls
 		UBEntries.IGNEOUS_WALL.registerModel();
 		UBEntries.METAMORPHIC_WALL.registerModel();
+		// Stairs
+		UBEntries.IGNEOUS_STONE_STAIRS.registerModel();
+		UBEntries.IGNEOUS_COBBLE_STAIRS.registerModel();
+		UBEntries.METAMORPHIC_STONE_STAIRS.registerModel();
+		UBEntries.METAMORPHIC_COBBLE_STAIRS.registerModel();
+		UBEntries.SEDIMENTARY_STONE_STAIRS.registerModel();
 	}
 
 	private final void registerItemsModels() {

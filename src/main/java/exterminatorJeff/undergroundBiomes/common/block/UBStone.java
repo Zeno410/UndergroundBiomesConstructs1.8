@@ -24,7 +24,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import Zeno410Utils.Acceptor;
 import exterminatorJeff.undergroundBiomes.api.UBEntry;
 import exterminatorJeff.undergroundBiomes.api.Variable;
-import exterminatorJeff.undergroundBiomes.client.UBOreOverlaysRegisrty;
+import exterminatorJeff.undergroundBiomes.client.UBOreOverlaysRegistry;
 import exterminatorJeff.undergroundBiomes.common.UBConfig;
 import exterminatorJeff.undergroundBiomes.common.UBCreativeTab;
 import exterminatorJeff.undergroundBiomes.common.block.SedimentaryStone.SedimentaryStoneType;
@@ -141,6 +141,14 @@ public abstract class UBStone extends Block implements Variable {
 		return super.setResistance(resistance * baseResistance);
 	}
 
+	public float getHardness() {
+		return blockHardness;
+	}
+
+	public float getResistance() {
+		return blockResistance;
+	}
+
 	@Override
 	public boolean isReplaceableOreGen(World world, BlockPos pos, Predicate<IBlockState> target) {
 		// this obnoxious call is needed because something is redoing ore
@@ -197,7 +205,7 @@ public abstract class UBStone extends Block implements Variable {
 			ModelBakery.addVariantName(entry.getAssociatedItem(), getModelName(i));
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(entry.getAssociatedItem(), i, new ModelResourceLocation(getModelName(i), "inventory"));
 			stoneModels.put(getVariantName(i), new ModelResourceLocation(getModelName(i), "inventory"));
-			stoneTextures.put(getVariantName(i), new ResourceLocation(UBOreOverlaysRegisrty.BLOCKS_TX_PATH + getVariantName(i)));
+			stoneTextures.put(getVariantName(i), new ResourceLocation(UBOreOverlaysRegistry.BLOCKS_TX_PATH + getVariantName(i)));
 		}
 	}
 

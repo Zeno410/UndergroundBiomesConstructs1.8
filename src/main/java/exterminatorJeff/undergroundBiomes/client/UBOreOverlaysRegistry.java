@@ -9,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
 import exterminatorJeff.undergroundBiomes.api.OreOverlaysRegistry;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
-public class UBOreOverlaysRegisrty implements OreOverlaysRegistry {
+public class UBOreOverlaysRegistry implements OreOverlaysRegistry {
 
 	/**
 	 * Ore overlays textures locations<br/>

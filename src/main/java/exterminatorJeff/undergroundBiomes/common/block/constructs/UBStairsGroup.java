@@ -1,6 +1,5 @@
 package exterminatorJeff.undergroundBiomes.common.block.constructs;
 
-import exterminatorJeff.undergroundBiomes.api.Registrable;
 import exterminatorJeff.undergroundBiomes.api.StairsEntry;
 import exterminatorJeff.undergroundBiomes.common.item.construct.UBStairsItem;
 
@@ -19,7 +18,7 @@ public class UBStairsGroup extends OrientedBlockGroup {
 	@Override
 	public void register() {
 		// Register the blocks
-		instances.values().forEach((stairs) -> ((Registrable) stairs).register());
+		instances.values().forEach((stairs) -> ((UBStairs) stairs).register());
 		// Register one item for all 4 facing
 		itemBlock = new UBStairsItem(((UBStairs) entry.getAssociatedBlock()).baseStone(), (StairsEntry) entry);
 		itemBlock.register();

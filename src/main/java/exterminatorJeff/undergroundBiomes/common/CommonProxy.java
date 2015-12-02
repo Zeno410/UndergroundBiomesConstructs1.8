@@ -7,7 +7,7 @@ import exterminatorJeff.undergroundBiomes.api.UBAPIHook;
 import exterminatorJeff.undergroundBiomes.api.UBEntries;
 import exterminatorJeff.undergroundBiomes.api.VanillaBlockEntry;
 import exterminatorJeff.undergroundBiomes.api.VanillaItemEntry;
-import exterminatorJeff.undergroundBiomes.client.UBOreOverlaysRegisrty;
+import exterminatorJeff.undergroundBiomes.client.UBOreOverlaysRegistry;
 import exterminatorJeff.undergroundBiomes.common.block.IgneousBrick;
 import exterminatorJeff.undergroundBiomes.common.block.MetamorphicCobble;
 import exterminatorJeff.undergroundBiomes.common.block.MetamorphicStone;
@@ -20,6 +20,12 @@ import exterminatorJeff.undergroundBiomes.common.block.constructs.UBButtonIgneou
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBButtonMetamorphic;
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBButtonMetamorphicCobble;
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBButtonSedimentary;
+import exterminatorJeff.undergroundBiomes.common.block.constructs.UBStairsGroup;
+import exterminatorJeff.undergroundBiomes.common.block.constructs.UBStairsIgneous;
+import exterminatorJeff.undergroundBiomes.common.block.constructs.UBStairsIgneousCobble;
+import exterminatorJeff.undergroundBiomes.common.block.constructs.UBStairsMetamorphic;
+import exterminatorJeff.undergroundBiomes.common.block.constructs.UBStairsMetamorphicCobble;
+import exterminatorJeff.undergroundBiomes.common.block.constructs.UBStairsSedimentary;
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBWallIgneous;
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBWallMetamorphic;
 import exterminatorJeff.undergroundBiomes.common.block.slab.UBIgneousBrickSlabDouble;
@@ -56,7 +62,7 @@ public class CommonProxy {
 
 	public void preInit(FMLPreInitializationEvent e) {
 		UBAPIHook.UB_ORES_MAKER = new UBOresMaker();
-		UBAPIHook.UB_ORES_OVERLAYS_REGISTRY = new UBOreOverlaysRegisrty();
+		UBAPIHook.UB_ORES_OVERLAYS_REGISTRY = new UBOreOverlaysRegistry();
 
 		UndergroundBiomes.config.initConfig(e);
 
@@ -121,6 +127,22 @@ public class CommonProxy {
 		// Walls
 		UBEntries.IGNEOUS_WALL.register(new UBWallIgneous(UBEntries.IGNEOUS_WALL));
 		UBEntries.METAMORPHIC_WALL.register(new UBWallMetamorphic(UBEntries.METAMORPHIC_WALL));
+		// Stairs
+		UBEntries.IGNEOUS_STONE_STAIRS.register(new UBStairsGroup(UBEntries.IGNEOUS_STONE_STAIRS, new UBStairsIgneous(UBEntries.IGNEOUS_STONE_STAIRS, EnumFacing.EAST),
+				new UBStairsIgneous(UBEntries.IGNEOUS_STONE_STAIRS, EnumFacing.NORTH), new UBStairsIgneous(UBEntries.IGNEOUS_STONE_STAIRS, EnumFacing.SOUTH),
+				new UBStairsIgneous(UBEntries.IGNEOUS_STONE_STAIRS, EnumFacing.WEST)));
+		UBEntries.IGNEOUS_COBBLE_STAIRS.register(new UBStairsGroup(UBEntries.IGNEOUS_COBBLE_STAIRS, new UBStairsIgneousCobble(UBEntries.IGNEOUS_COBBLE_STAIRS, EnumFacing.EAST),
+				new UBStairsIgneousCobble(UBEntries.IGNEOUS_COBBLE_STAIRS, EnumFacing.NORTH), new UBStairsIgneousCobble(UBEntries.IGNEOUS_COBBLE_STAIRS, EnumFacing.SOUTH),
+				new UBStairsIgneousCobble(UBEntries.IGNEOUS_COBBLE_STAIRS, EnumFacing.WEST)));
+		UBEntries.METAMORPHIC_STONE_STAIRS.register(new UBStairsGroup(UBEntries.METAMORPHIC_STONE_STAIRS, new UBStairsMetamorphic(UBEntries.METAMORPHIC_STONE_STAIRS, EnumFacing.EAST),
+				new UBStairsMetamorphic(UBEntries.METAMORPHIC_STONE_STAIRS, EnumFacing.NORTH), new UBStairsMetamorphic(UBEntries.METAMORPHIC_STONE_STAIRS, EnumFacing.SOUTH),
+				new UBStairsMetamorphic(UBEntries.METAMORPHIC_STONE_STAIRS, EnumFacing.WEST)));
+		UBEntries.METAMORPHIC_COBBLE_STAIRS.register(new UBStairsGroup(UBEntries.METAMORPHIC_COBBLE_STAIRS, new UBStairsMetamorphicCobble(UBEntries.METAMORPHIC_COBBLE_STAIRS, EnumFacing.EAST),
+				new UBStairsMetamorphicCobble(UBEntries.METAMORPHIC_COBBLE_STAIRS, EnumFacing.NORTH), new UBStairsMetamorphicCobble(UBEntries.METAMORPHIC_COBBLE_STAIRS, EnumFacing.SOUTH),
+				new UBStairsMetamorphicCobble(UBEntries.METAMORPHIC_COBBLE_STAIRS, EnumFacing.WEST)));
+		UBEntries.SEDIMENTARY_STONE_STAIRS.register(new UBStairsGroup(UBEntries.SEDIMENTARY_STONE_STAIRS, new UBStairsSedimentary(UBEntries.SEDIMENTARY_STONE_STAIRS, EnumFacing.EAST),
+				new UBStairsSedimentary(UBEntries.SEDIMENTARY_STONE_STAIRS, EnumFacing.NORTH), new UBStairsSedimentary(UBEntries.SEDIMENTARY_STONE_STAIRS, EnumFacing.SOUTH),
+				new UBStairsSedimentary(UBEntries.SEDIMENTARY_STONE_STAIRS, EnumFacing.WEST)));
 	}
 
 	private final void createItems() {
@@ -171,10 +193,10 @@ public class CommonProxy {
 					'B', VanillaItemEntry.bow.getAssociatedItem(), 'R', VanillaItemEntry.redstone.getAssociatedItem()));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(VanillaBlockEntry.stone_pressure_plate.getAssociatedBlock(), 1), "XX", 'X', "stone"));
 			// GameRegistry.addRecipe(new ShapedOreRecipe(new
-			// ItemStack(Block.stoneSingleSlab, 6, 3), "XXX", 'X',
+			// ItemStack(Block.stoneSingleSlab, 6, 3), "xxx", 'x',
 			// VanillaBlockEntry.cobblestone.block()));
 			// GameRegistry.addRecipe(new ShapedOreRecipe(new
-			// ItemStack(Block.stoneSingleSlab, 6, 0), "XXX", 'X',
+			// ItemStack(Block.stoneSingleSlab, 6, 0), "xxx", 'x',
 			// "stoneSmooth"));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(VanillaItemEntry.redstoneRepeater.getAssociatedItem(), 1), "TRT", "XXX", 'X', "stone", 'T',
 					VanillaBlockEntry.torchRedstoneActive.getAssociatedBlock(), 'R', VanillaItemEntry.redstone.getAssociatedItem()));

@@ -19,8 +19,8 @@ final class TexturesRegistrationHandler {
 
 	@SubscribeEvent
 	public void registerOverlays(TextureStitchEvent.Pre e) {
-		assert !UBOreOverlaysRegisrty.overlaysLocations.isEmpty() : "overlaysLocations is empty !";
-		UBOreOverlaysRegisrty.overlaysLocations.forEach(new BiConsumer<String, ResourceLocation>() {
+		assert !UBOreOverlaysRegistry.overlaysLocations.isEmpty() : "overlaysLocations is empty !";
+		UBOreOverlaysRegistry.overlaysLocations.forEach(new BiConsumer<String, ResourceLocation>() {
 			@Override
 			public void accept(String srt, ResourceLocation location) {
 				e.map.registerSprite(location);

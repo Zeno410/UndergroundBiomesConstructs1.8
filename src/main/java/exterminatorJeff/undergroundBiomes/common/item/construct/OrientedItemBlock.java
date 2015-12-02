@@ -7,6 +7,7 @@ import exterminatorJeff.undergroundBiomes.api.Variable;
 import exterminatorJeff.undergroundBiomes.common.UBCreativeTab;
 import exterminatorJeff.undergroundBiomes.common.block.UBStone;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSnow;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelBakery;
@@ -14,6 +15,7 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -29,7 +31,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public abstract class OrientedItemBlock extends Item implements Variable {
 
 	private final UBStone baseStone;
-	private final OrientedBlockEntry entry;
+	protected final OrientedBlockEntry entry;
 
 	public OrientedItemBlock(UBStone baseStone, OrientedBlockEntry entry) {
 		this.baseStone = baseStone;
@@ -60,12 +62,13 @@ public abstract class OrientedItemBlock extends Item implements Variable {
 
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
-		Block block = worldIn.getBlockState(pos).getBlock();
-		Block orientedBlock = entry.getBlock(side);
+		IBlockState state = worldIn.getBlockState(pos);
+		Block block = state.getBlock();
+		Block orientedBlock = getBlockToPlace(playerIn, side);
 
-		stack = new ItemStack(orientedBlock, 1, playerIn.getHeldItem().getMetadata());
-
-		if (!block.isReplaceable(worldIn, pos))
+		if (block == Blocks.snow_layer && ((Integer) state.getValue(BlockSnow.LAYERS)).intValue() < 1)
+			side = EnumFacing.UP;
+		else if (!block.isReplaceable(worldIn, pos))
 			pos = pos.offset(side);
 
 		if (stack.stackSize == 0) {
@@ -75,12 +78,12 @@ public abstract class OrientedItemBlock extends Item implements Variable {
 		} else if (pos.getY() == 255 && orientedBlock.getMaterial().isSolid()) {
 			return false;
 		} else if (worldIn.canBlockBePlaced(orientedBlock, pos, false, side, (Entity) null, stack)) {
-			int meta = getMetadata(stack.getMetadata());
-			IBlockState state = orientedBlock.onBlockPlaced(worldIn, pos, side, hitX, hitY, hitZ, meta, playerIn);
+			int i = this.getMetadata(stack.getMetadata());
+			IBlockState blockstate = orientedBlock.onBlockPlaced(worldIn, pos, side, hitX, hitY, hitZ, i, playerIn);
 
-			if (placeBlockAt(stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ, state)) {
-				worldIn.playSoundEffect(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, orientedBlock.stepSound.getPlaceSound(), (orientedBlock.stepSound.getVolume() + 1.0F) / 2.0F,
-						orientedBlock.stepSound.getFrequency() * 0.8F);
+			if (placeBlockAt(stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ, blockstate)) {
+				worldIn.playSoundEffect((double) ((float) pos.getX() + 0.5F), (double) ((float) pos.getY() + 0.5F), (double) ((float) pos.getZ() + 0.5F),
+						orientedBlock.stepSound.getPlaceSound(), (orientedBlock.stepSound.getVolume() + 1.0F) / 2.0F, orientedBlock.stepSound.getFrequency() * 0.8F);
 				--stack.stackSize;
 			}
 
@@ -90,12 +93,21 @@ public abstract class OrientedItemBlock extends Item implements Variable {
 		}
 	}
 
+	/**
+	 * Get the correct {@link Block} to place
+	 * 
+	 * @param player
+	 * @param side
+	 * @return
+	 */
+	protected abstract Block getBlockToPlace(EntityPlayer player, EnumFacing side);
+
 	public boolean placeBlockAt(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, IBlockState newState) {
 		if (!world.setBlockState(pos, newState, 3))
 			return false;
 
 		IBlockState state = world.getBlockState(pos);
-		Block orientedBlock = entry.getBlock(side);
+		Block orientedBlock = getBlockToPlace(player, side);
 
 		if (state.getBlock() == orientedBlock) {
 			orientedBlock.onBlockPlacedBy(world, pos, state, player, stack);

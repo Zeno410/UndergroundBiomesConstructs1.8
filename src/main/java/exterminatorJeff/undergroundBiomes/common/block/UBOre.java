@@ -33,11 +33,13 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * One instance per ore. Each instance has metadata used for UB stone variants
  * <br/>
- * If the baseOre is metadata based then it's one instance per baseOre:meta
+ * If the baseOre is has also metadata, then it's one instance per baseOre:meta
  * couples<br/>
  * The mod should create an instance for each registered ores, if an overlay is
  * supplied
@@ -99,6 +101,7 @@ public abstract class UBOre extends Block implements Variable {
 		setUnlocalizedName(name);
 	}
 
+	@SideOnly(Side.CLIENT)
 	@Override
 	public EnumWorldBlockLayer getBlockLayer() {
 		return EnumWorldBlockLayer.CUTOUT_MIPPED;

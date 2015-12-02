@@ -69,7 +69,7 @@ public class UBOreModelBase implements IModel {
 		 */
 		TextureMap textureMap = Minecraft.getMinecraft().getTextureMapBlocks();
 		TextureAtlasSprite stoneTexture = textureMap.getAtlasSprite(OreOverlaysRegistry.BLOCKS_TX_PATH + stoneVariant);
-		TextureAtlasSprite oreTexture = textureMap.getAtlasSprite(OreOverlaysRegistry.BLOCKS_TX_PATH + UBOreOverlaysRegisrty.oresToOverlays.get(oreType));
+		TextureAtlasSprite oreTexture = textureMap.getAtlasSprite(OreOverlaysRegistry.BLOCKS_TX_PATH + UBOreOverlaysRegistry.oresToOverlays.get(oreType));
 		/*
 		 *
 		 */
