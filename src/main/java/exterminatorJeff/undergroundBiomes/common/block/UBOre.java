@@ -37,10 +37,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
- * One instance per ore. Each instance has metadata used for UB stone variants
- * <br/>
+ * One instance per ore. Each instance has metadata used for UB stone
+ * variants </br>
  * If the baseOre is has also metadata, then it's one instance per baseOre:meta
- * couples<br/>
+ * couples</br>
  * The mod should create an instance for each registered ores, if an overlay is
  * supplied
  * 
@@ -70,10 +70,13 @@ public abstract class UBOre extends Block implements Variable {
 	 */
 	public final String baseOreName;
 	/**
-	 * The stone name<br/>
+	 * The stone name</br>
 	 * Example : "igneous_stone", "metamorphic_stone", "sedimentary_stone"
 	 */
 	public final String baseStoneName;
+	/**
+	 * Examples : "minecraft", "simpleores"
+	 */
 	public final String oreModDomain;
 	/**
 	 * Examples : "igneous_stone_coal", "metamorphic_stone_diamond"
@@ -136,16 +139,13 @@ public abstract class UBOre extends Block implements Variable {
 	}
 
 	/**
-	 * This one is special, I use it to pass arguments to the corresponding
-	 * IModel<br/>
-	 * Examples :<br/>
-	 * "undergroundbiomes:ubores.igneous_stone.red_granite.minecraft:iron_ore",
-	 * <br/>
-	 * "undergroundbiomes:ubores.metamorphic_stone.gneiss.simpleores:tin_ore"
+	 * Examples :</br>
+	 * "undergroundbiomes:ub_ore.red_granite.simpleores:tin_ore"</br>
+	 * "undergroundbiomes:ub_ore.gneiss.minecraft:diamond_ore"
 	 */
 	@Override
 	public String getModelName(int meta) {
-		return UBOreModelLoader.UBORE_MODEL + "." + baseStoneName + "." + getVariantName(meta) + "." + oreModDomain + ":" + baseOreName;
+		return UBOreModelLoader.UBORE_MODEL + "." + getVariantName(meta) + "." + oreModDomain + ":" + baseOreName;
 	}
 
 	@Override

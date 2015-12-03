@@ -1,133 +1,79 @@
 package exterminatorJeff.undergroundBiomes.client;
 
-import java.awt.Color;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
-import javax.vecmath.Vector3f;
-
-import com.google.common.primitives.Ints;
-
-import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.block.model.ItemTransformVec3f;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.vertex.VertexFormat;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.client.resources.model.ModelRotation;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.IFlexibleBakedModel;
+import net.minecraftforge.client.model.IModel;
+import net.minecraftforge.client.model.IModelState;
+import net.minecraftforge.client.model.IRetexturableModel;
+import net.minecraftforge.client.model.ModelLoaderRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import org.apache.commons.lang3.StringUtils;
+
+import com.google.common.base.Function;
+import com.google.common.collect.ImmutableMap;
+
+import exterminatorJeff.undergroundBiomes.api.OreOverlaysRegistry;
 
 /**
+ * One instance per UBOre instance
  * 
  * @author Spooky4672
  *
  */
-@SuppressWarnings("deprecation")
-public class UBOreModel implements IFlexibleBakedModel {
+@SideOnly(Side.CLIENT)
+public class UBOreModel implements IModel {
 
-	private final List<BakedQuad> allQuads = new ArrayList<BakedQuad>();
-	private final VertexFormat format;
-	private final TextureAtlasSprite texture;
+	private final String stoneTexture;
+	private final String oreTexture;
 
-	public UBOreModel(VertexFormat format, TextureAtlasSprite stoneTexture, TextureAtlasSprite oreTexture) {
-		this.format = format;
-		this.texture = stoneTexture;
-		for (int i = 0; i < EnumFacing.VALUES.length; i++) {
-			allQuads.add(getBakedQuad(stoneTexture, EnumFacing.VALUES[i]));
-			allQuads.add(getBakedQuad(oreTexture, EnumFacing.VALUES[i]));
+	public UBOreModel(ResourceLocation modelLocation) {
+		String str = StringUtils.removeStart(modelLocation.getResourcePath(), UBOreModelLoader.UBORE_MODEL);
+		System.err.println(str);
+		String oreType = StringUtils.substringAfterLast(str, ":");
+		str = StringUtils.remove(str, ":" + oreType);
+		String oreResourcesDomain = StringUtils.substringAfterLast(str, ".");
+		str = StringUtils.remove(str, "." + oreResourcesDomain);
+		String stoneVariant = StringUtils.substringAfterLast(str, ".");
+		stoneTexture = OreOverlaysRegistry.BLOCKS_TX_PATH + stoneVariant;
+		oreTexture = OreOverlaysRegistry.BLOCKS_TX_PATH + UBOreOverlaysRegistry.oresToOverlays.get(oreType);
+	}
+
+	@Override
+	public Collection<ResourceLocation> getDependencies() {
+		return Collections.emptySet();
+	}
+
+	@Override
+	public Collection<ResourceLocation> getTextures() {
+		return Collections.emptySet();
+	}
+
+	@Override
+	public IFlexibleBakedModel bake(IModelState state, VertexFormat format, Function<ResourceLocation, TextureAtlasSprite> bakedTextureGetter) {
+		IModel baseModel = null;
+		try {
+			baseModel = ModelLoaderRegistry.getModel(new ResourceLocation("undergroundbiomes:block/custom_ore"));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		IRetexturableModel retexturableModel = (IRetexturableModel) baseModel;
+		IModel finalModel = retexturableModel.retexture(ImmutableMap.of("stone", stoneTexture, "ore", oreTexture));
+
+		return finalModel.bake(state, format, bakedTextureGetter);
 	}
 
 	@Override
-	public List<BakedQuad> getFaceQuads(EnumFacing facing) {
-		return Collections.emptyList();
-	}
-
-	@Override
-	public List<BakedQuad> getGeneralQuads() {
-		return allQuads;
-	}
-
-	@Override
-	public boolean isAmbientOcclusion() {
-		return true;
-	}
-
-	@Override
-	public boolean isGui3d() {
-		return true;
-	}
-
-	@Override
-	public boolean isBuiltInRenderer() {
-		return false;
-	}
-
-	@Override
-	public TextureAtlasSprite getTexture() {
-		return texture;
-	}
-
-	@Override
-	public ItemCameraTransforms getItemCameraTransforms() {
-		return new ItemCameraTransforms(new ItemTransformVec3f(new Vector3f(10, -45, 170), new Vector3f(0, 0.15F, -0.175F), new Vector3f(0.375F, 0.375F, 0.375F)),
-				ItemTransformVec3f.DEFAULT, ItemTransformVec3f.DEFAULT, ItemTransformVec3f.DEFAULT);
-	}
-
-	@Override
-	public VertexFormat getFormat() {
-		return format;
-	}
-
-	private BakedQuad getBakedQuad(TextureAtlasSprite texture, EnumFacing face) {
-		final float MIN = -0.001F, MAX = 1.001F;
-
-		float x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4;
-
-		switch (face) {
-		case DOWN:
-			x1 = x2 = z2 = z3 = MIN;
-			z1 = x4 = z4 = x3 = MAX;
-			y1 = y2 = y4 = y3 = MIN;
-			break;
-		case EAST:
-			y1 = z1 = z2 = y4 = MAX;
-			y2 = z4 = y3 = z3 = MIN;
-			x1 = x2 = x4 = x3 = MAX;
-			break;
-		case NORTH:
-			x1 = y1 = x2 = y4 = MAX;
-			y2 = x4 = x3 = y3 = MIN;
-			z1 = z2 = z4 = z3 = MIN;
-			break;
-		case SOUTH:
-			x1 = x2 = y2 = y3 = MIN;
-			y1 = x4 = y4 = x3 = MAX;
-			z1 = z2 = z4 = z3 = MAX;
-			break;
-		case UP:
-			x1 = z1 = x2 = z4 = MIN;
-			z2 = x4 = x3 = z3 = MAX;
-			y1 = y2 = y4 = y3 = MAX;
-			break;
-		case WEST:
-			y1 = y4 = z4 = z3 = MAX;
-			z1 = y2 = z2 = y3 = MIN;
-			x1 = x2 = x4 = x3 = MIN;
-			break;
-		default:
-			throw new RuntimeException("Unknown face");
-		}
-
-		int c = Color.WHITE.getRGB();
-
-		return new BakedQuad(Ints.concat(vertexToInts(x1, y1, z1, c, texture, 0, 0), vertexToInts(x2, y2, z2, c, texture, 0, 16), vertexToInts(x3, y3, z3, c, texture, 16, 16),
-				vertexToInts(x4, y4, z4, c, texture, 16, 0)), -1, face);
-	}
-
-	private int[] vertexToInts(float x, float y, float z, int color, TextureAtlasSprite texture, float u, float v) {
-		return new int[] { Float.floatToRawIntBits(x), Float.floatToRawIntBits(y), Float.floatToRawIntBits(z), color, Float.floatToRawIntBits(texture.getInterpolatedU(u)),
-				Float.floatToRawIntBits(texture.getInterpolatedV(v)), 0 };
+	public IModelState getDefaultState() {
+		return ModelRotation.X0_Y0;
 	}
 
 }

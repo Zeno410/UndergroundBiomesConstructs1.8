@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class UBOreModelLoader implements ICustomModelLoader {
 
-	private static final String UBORE_MODEL_NAME = "ubores";
+	private static final String UBORE_MODEL_NAME = "ub_ore";
 	public static final String UBORE_MODEL = UndergroundBiomes.MODID + ":" + UBORE_MODEL_NAME;
 
 	@SuppressWarnings("unused")
@@ -31,7 +31,7 @@ public class UBOreModelLoader implements ICustomModelLoader {
 	public IModel loadModel(ResourceLocation modelLocation) {
 		String modelName = modelLocation.getResourcePath();
 		if (modelName.contains(UBORE_MODEL_NAME)) {
-			return new UBOreModelBase(modelLocation);
+			return new UBOreModel(modelLocation);
 		}
 		throw new RuntimeException("A builtin model '" + modelName + "' is not defined.");
 	}
