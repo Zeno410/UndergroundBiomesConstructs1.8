@@ -37,7 +37,6 @@ public class UBOreModel implements IModel {
 
 	public UBOreModel(ResourceLocation modelLocation) {
 		String str = StringUtils.removeStart(modelLocation.getResourcePath(), UBOreModelLoader.UBORE_MODEL);
-		System.err.println(str);
 		String oreType = StringUtils.substringAfterLast(str, ":");
 		str = StringUtils.remove(str, ":" + oreType);
 		String oreResourcesDomain = StringUtils.substringAfterLast(str, ".");
