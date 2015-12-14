@@ -4,11 +4,11 @@ import exterminatorJeff.undergroundBiomes.api.UBEntries;
 import exterminatorJeff.undergroundBiomes.api.VanillaBlockEntry;
 import exterminatorJeff.undergroundBiomes.common.UBConfig;
 
-public class StrataLayers {
+class StrataLayers {
 
-	public StrataLayer[][] layers;
+	StrataLayer[][] layers;
 
-	public StrataLayers() {
+	StrataLayers() {
 		layers = new StrataLayer[30][];
 		if (UBConfig.harmoniousStrata()) {
 			createHarmoniousLayers();

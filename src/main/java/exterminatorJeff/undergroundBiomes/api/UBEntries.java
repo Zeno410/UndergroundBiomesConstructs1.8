@@ -1,7 +1,6 @@
 package exterminatorJeff.undergroundBiomes.api;
 
 /**
- * TODO Add the ores here
  * 
  * @author Spooky4672
  *

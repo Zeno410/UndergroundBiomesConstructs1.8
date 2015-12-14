@@ -1,5 +1,5 @@
 {
-    "parent":"block/quartzite_stone_stairs",
+    "parent":"undergroundbiomes:block/quartzite_stone_stairs",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

@@ -44,28 +44,17 @@ public final class UBWorldGenManager {
 		}
 	}
 
-	// private long beforeTime, afterTime, totalTime;
-
 	@SubscribeEvent
 	public void onPopulateChunkPost(PopulateChunkEvent.Post event) {
 		// TODO Check dimensions list in config
-		if (event.world.provider.getDimensionId() != 0 && !worldLoaded) {
-			return;
+		if (event.world.provider.getDimensionId() == 0 && worldLoaded) {
+			Chunk chunk = event.world.getChunkFromChunkCoords(event.chunkX, event.chunkZ);
+
+			xPos = chunk.xPosition * 16;
+			zPos = chunk.zPosition * 16;
+
+			replacer.replaceStoneInChunk(chunk);
 		}
-
-		Chunk chunk = event.world.getChunkFromChunkCoords(event.chunkX, event.chunkZ);
-
-		xPos = chunk.xPosition * 16;
-		zPos = chunk.zPosition * 16;
-
-		// beforeTime = System.nanoTime();
-		replacer.replaceStoneInChunk(chunk);
-		// afterTime = System.nanoTime();
-
-		// totalTime = (afterTime - beforeTime);
-
-		// UndergroundBiomes.logger.info(String.format("The chunk at ( %d ; %d )
-		// took %d ns to be UBified", xPos, zPos, totalTime));
 	}
 
 }

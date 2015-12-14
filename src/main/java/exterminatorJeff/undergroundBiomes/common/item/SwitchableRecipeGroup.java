@@ -12,6 +12,7 @@ import Zeno410Utils.Mutable;
  * @author Zeno410
  */
 public class SwitchableRecipeGroup extends Acceptor<Boolean> {
+
 	private Collection<IRecipe> recipes;
 
 	public SwitchableRecipeGroup(Collection<IRecipe> recipes, Mutable<Boolean> flag) {
@@ -21,6 +22,7 @@ public class SwitchableRecipeGroup extends Acceptor<Boolean> {
 		flag.informOnChange(this);
 	}
 
+	@SuppressWarnings("unchecked")
 	private void addRecipes() {
 		for (IRecipe recipe : recipes) {
 			CraftingManager.getInstance().getRecipeList().add(recipe);

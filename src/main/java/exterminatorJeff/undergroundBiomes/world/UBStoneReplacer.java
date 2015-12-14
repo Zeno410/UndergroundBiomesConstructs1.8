@@ -6,8 +6,8 @@ import net.minecraft.world.chunk.Chunk;
 
 public interface UBStoneReplacer {
 
-	final Map<Integer, UBBiome> biomeList = UndergroundBiomeSet.getInstance().biomeList;
-	final int NB_BIOMES = UndergroundBiomeSet.getInstance().biomeList.size();
+	final Map<Integer, UBBiome> biomeList = UndergroundBiomeSet.INSTANCE.biomeList;
+	final int NB_BIOMES = UndergroundBiomeSet.INSTANCE.biomeList.size();
 
 	final int[][] biomeValues = new int[16][16];
 

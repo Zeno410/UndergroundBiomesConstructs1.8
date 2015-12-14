@@ -1,73 +1,74 @@
 package exterminatorJeff.undergroundBiomes.world;
 
-import java.util.HashMap;
+import java.util.Map;
+
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 
 import exterminatorJeff.undergroundBiomes.api.UBEntries;
 import exterminatorJeff.undergroundBiomes.api.VanillaBlockEntry;
+import exterminatorJeff.undergroundBiomes.common.UBConfig;
 
 /**
  * All underground biomes
  * 
  * @author Zeno410
  */
-public final class UndergroundBiomeSet {
-
-	// Singleton instance
-	private static UndergroundBiomeSet INSTANCE;
-
-	public static final UndergroundBiomeSet getInstance() {
-		if (INSTANCE == null)
-			return INSTANCE = new UndergroundBiomeSet();
-		else
-			return INSTANCE;
-	}
-
-	private UndergroundBiomeSet() {
-	}
+public enum UndergroundBiomeSet {
+	INSTANCE;
 
 	private final StrataLayers strataLayers = new StrataLayers();
 
-	public final HashMap<Integer, UBBiome> biomeList = new HashMap<Integer, UBBiome>();
+	public final Map<Integer, UBBiome> biomeList;
 
-	public final UBBiome igneous1 = (new UBBiome(0, UBEntries.IGNEOUS_STONE, 0, biomeList)).setName("Igneous").AddStrataLayers(strataLayers.layers[0]);
-	public final UBBiome igneous2 = (new UBBiome(1, UBEntries.IGNEOUS_STONE, 1, biomeList)).setName("Igneous").AddStrataLayers(strataLayers.layers[1]);
-	public final UBBiome igneous3 = (new UBBiome(2, UBEntries.IGNEOUS_STONE, 2, biomeList)).setName("Igneous").AddStrataLayers(strataLayers.layers[2]);
-	public final UBBiome igneous4 = (new UBBiome(3, UBEntries.IGNEOUS_STONE, 3, biomeList)).setName("Igneous").AddStrataLayers(strataLayers.layers[3]);
-	public final UBBiome igneous5 = (new UBBiome(4, UBEntries.IGNEOUS_STONE, 4, biomeList)).setName("Igneous").AddStrataLayers(strataLayers.layers[4]);
-	public final UBBiome igneous6 = (new UBBiome(5, UBEntries.IGNEOUS_STONE, 5, biomeList)).setName("Igneous").AddStrataLayers(strataLayers.layers[5]);
-	public final UBBiome igneous7 = (new UBBiome(6, UBEntries.IGNEOUS_STONE, 6, biomeList)).setName("Igneous").AddStrataLayers(strataLayers.layers[6]);
-	public final UBBiome igneous8 = (new UBBiome(7, UBEntries.IGNEOUS_STONE, 7, biomeList)).setName("Igneous").AddStrataLayers(strataLayers.layers[7]);
+	private UndergroundBiomeSet() {
+		Builder<Integer, UBBiome> mb = ImmutableMap.builder();
 
-	public final UBBiome igneous9 = (new UBBiome(8, UBEntries.IGNEOUS_STONE, 0, biomeList)).setName("Igneous").AddStrataLayers(strataLayers.layers[8]);
-	public final UBBiome igneous10 = (new UBBiome(9, UBEntries.IGNEOUS_STONE, 1, biomeList)).setName("Igneous").AddStrataLayers(strataLayers.layers[9]);
-	public final UBBiome igneous11 = (new UBBiome(10, UBEntries.IGNEOUS_STONE, 2, biomeList)).setName("Igneous").AddStrataLayers(strataLayers.layers[0]);
-	public final UBBiome igneous12 = (new UBBiome(11, UBEntries.IGNEOUS_STONE, 3, biomeList)).setName("Igneous").AddStrataLayers(strataLayers.layers[1]);
-	public final UBBiome igneous13 = (new UBBiome(12, UBEntries.IGNEOUS_STONE, 4, biomeList)).setName("Igneous").AddStrataLayers(strataLayers.layers[2]);
-	public final UBBiome igneous14 = (new UBBiome(13, UBEntries.IGNEOUS_STONE, 5, biomeList)).setName("Igneous").AddStrataLayers(strataLayers.layers[3]);
-	public final UBBiome igneous15 = (new UBBiome(14, UBEntries.IGNEOUS_STONE, 6, biomeList)).setName("Igneous").AddStrataLayers(strataLayers.layers[4]);
-	public final UBBiome igneous16 = (new UBBiome(15, UBEntries.IGNEOUS_STONE, 7, biomeList)).setName("Igneous").AddStrataLayers(strataLayers.layers[5]);
+		mb.put(0, new UBBiome("Igneous", UBEntries.IGNEOUS_STONE, 0).addStrataLayers(strataLayers.layers[0]));
+		mb.put(1, new UBBiome("Igneous", UBEntries.IGNEOUS_STONE, 1).addStrataLayers(strataLayers.layers[1]));
+		mb.put(2, new UBBiome("Igneous", UBEntries.IGNEOUS_STONE, 2).addStrataLayers(strataLayers.layers[2]));
+		mb.put(3, new UBBiome("Igneous", UBEntries.IGNEOUS_STONE, 3).addStrataLayers(strataLayers.layers[3]));
+		mb.put(4, new UBBiome("Igneous", UBEntries.IGNEOUS_STONE, 4).addStrataLayers(strataLayers.layers[4]));
+		mb.put(5, new UBBiome("Igneous", UBEntries.IGNEOUS_STONE, 5).addStrataLayers(strataLayers.layers[5]));
+		mb.put(6, new UBBiome("Igneous", UBEntries.IGNEOUS_STONE, 6).addStrataLayers(strataLayers.layers[6]));
+		mb.put(7, new UBBiome("Igneous", UBEntries.IGNEOUS_STONE, 7).addStrataLayers(strataLayers.layers[7]));
 
-	public final UBBiome metamorphic1 = (new UBBiome(16, UBEntries.METAMORPHIC_STONE, 0, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[6]);
-	public final UBBiome metamorphic2 = (new UBBiome(17, UBEntries.METAMORPHIC_STONE, 1, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[7]);
-	public final UBBiome metamorphic3 = (new UBBiome(18, UBEntries.METAMORPHIC_STONE, 1, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[8]);
-	public final UBBiome metamorphic4 = (new UBBiome(19, UBEntries.METAMORPHIC_STONE, 3, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[9]);
-	public final UBBiome metamorphic5 = (new UBBiome(20, UBEntries.METAMORPHIC_STONE, 4, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[0]);
-	public final UBBiome metamorphic6 = (new UBBiome(21, UBEntries.METAMORPHIC_STONE, 5, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[1]);
-	public final UBBiome metamorphic7 = (new UBBiome(22, UBEntries.METAMORPHIC_STONE, 6, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[2]);
-	public final UBBiome metamorphic8 = (new UBBiome(23, UBEntries.METAMORPHIC_STONE, 7, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[3]);
+		mb.put(8, new UBBiome("Igneous", UBEntries.IGNEOUS_STONE, 0).addStrataLayers(strataLayers.layers[8]));
+		mb.put(9, new UBBiome("Igneous", UBEntries.IGNEOUS_STONE, 1).addStrataLayers(strataLayers.layers[9]));
+		mb.put(10, new UBBiome("Igneous", UBEntries.IGNEOUS_STONE, 2).addStrataLayers(strataLayers.layers[0]));
+		mb.put(11, new UBBiome("Igneous", UBEntries.IGNEOUS_STONE, 3).addStrataLayers(strataLayers.layers[1]));
+		mb.put(12, new UBBiome("Igneous", UBEntries.IGNEOUS_STONE, 4).addStrataLayers(strataLayers.layers[2]));
+		mb.put(13, new UBBiome("Igneous", UBEntries.IGNEOUS_STONE, 5).addStrataLayers(strataLayers.layers[3]));
+		mb.put(14, new UBBiome("Igneous", UBEntries.IGNEOUS_STONE, 6).addStrataLayers(strataLayers.layers[4]));
+		mb.put(15, new UBBiome("Igneous", UBEntries.IGNEOUS_STONE, 7).addStrataLayers(strataLayers.layers[5]));
 
-	public final UBBiome metamorphic9 = (new UBBiome(24, UBEntries.METAMORPHIC_STONE, 0, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[4]);
-	public final UBBiome metamorphic10 = (new UBBiome(25, UBEntries.METAMORPHIC_STONE, 1, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[5]);
-	public final UBBiome metamorphic11 = (new UBBiome(26, UBEntries.METAMORPHIC_STONE, 1, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[6]);
-	public final UBBiome metamorphic12 = (new UBBiome(27, UBEntries.METAMORPHIC_STONE, 3, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[7]);
-	public final UBBiome metamorphic13 = (new UBBiome(28, UBEntries.METAMORPHIC_STONE, 4, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[8]);
-	public final UBBiome metamorphic14 = (new UBBiome(29, UBEntries.METAMORPHIC_STONE, 5, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[9]);
-	public final UBBiome metamorphic15 = (new UBBiome(30, UBEntries.METAMORPHIC_STONE, 6, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[0]);
-	public final UBBiome metamorphic16 = (new UBBiome(31, UBEntries.METAMORPHIC_STONE, 7, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[1]);
+		mb.put(16, new UBBiome("Metamorphic", UBEntries.METAMORPHIC_STONE, 0).addStrataLayers(strataLayers.layers[6]));
+		mb.put(17, new UBBiome("Metamorphic", UBEntries.METAMORPHIC_STONE, 1).addStrataLayers(strataLayers.layers[7]));
+		mb.put(18, new UBBiome("Metamorphic", UBEntries.METAMORPHIC_STONE, 2).addStrataLayers(strataLayers.layers[8]));
+		mb.put(19, new UBBiome("Metamorphic", UBEntries.METAMORPHIC_STONE, 3).addStrataLayers(strataLayers.layers[9]));
+		mb.put(20, new UBBiome("Metamorphic", UBEntries.METAMORPHIC_STONE, 4).addStrataLayers(strataLayers.layers[0]));
+		mb.put(21, new UBBiome("Metamorphic", UBEntries.METAMORPHIC_STONE, 5).addStrataLayers(strataLayers.layers[1]));
+		mb.put(22, new UBBiome("Metamorphic", UBEntries.METAMORPHIC_STONE, 6).addStrataLayers(strataLayers.layers[2]));
+		mb.put(23, new UBBiome("Metamorphic", UBEntries.METAMORPHIC_STONE, 7).addStrataLayers(strataLayers.layers[3]));
 
-	public final UBBiome vanillaStone1 = (new UBBiome(32, VanillaBlockEntry.stone, 0, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[0]);
-	public final UBBiome vanillaStone2 = (new UBBiome(33, VanillaBlockEntry.stone, 0, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[1]);
-	public final UBBiome vanillaStone3 = (new UBBiome(34, VanillaBlockEntry.stone, 0, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[2]);
-	public final UBBiome vanillaStone4 = (new UBBiome(35, VanillaBlockEntry.stone, 0, biomeList)).setName("Metamorphic").AddStrataLayers(strataLayers.layers[3]);
+		mb.put(24, new UBBiome("Metamorphic", UBEntries.METAMORPHIC_STONE, 0).addStrataLayers(strataLayers.layers[4]));
+		mb.put(25, new UBBiome("Metamorphic", UBEntries.METAMORPHIC_STONE, 1).addStrataLayers(strataLayers.layers[5]));
+		mb.put(26, new UBBiome("Metamorphic", UBEntries.METAMORPHIC_STONE, 2).addStrataLayers(strataLayers.layers[6]));
+		mb.put(27, new UBBiome("Metamorphic", UBEntries.METAMORPHIC_STONE, 3).addStrataLayers(strataLayers.layers[7]));
+		mb.put(28, new UBBiome("Metamorphic", UBEntries.METAMORPHIC_STONE, 4).addStrataLayers(strataLayers.layers[8]));
+		mb.put(29, new UBBiome("Metamorphic", UBEntries.METAMORPHIC_STONE, 5).addStrataLayers(strataLayers.layers[9]));
+		mb.put(30, new UBBiome("Metamorphic", UBEntries.METAMORPHIC_STONE, 6).addStrataLayers(strataLayers.layers[0]));
+		mb.put(31, new UBBiome("Metamorphic", UBEntries.METAMORPHIC_STONE, 7).addStrataLayers(strataLayers.layers[1]));
+
+		if (UBConfig.vanillaStoneBiomes()) {
+			mb.put(32, new UBBiome("Metamorphic", VanillaBlockEntry.stone, 0).addStrataLayers(strataLayers.layers[0]));
+			mb.put(33, new UBBiome("Metamorphic", VanillaBlockEntry.stone, 0).addStrataLayers(strataLayers.layers[1]));
+			mb.put(34, new UBBiome("Metamorphic", VanillaBlockEntry.stone, 0).addStrataLayers(strataLayers.layers[2]));
+			mb.put(35, new UBBiome("Metamorphic", VanillaBlockEntry.stone, 0).addStrataLayers(strataLayers.layers[3]));
+		}
+
+		biomeList = mb.build();
+
+	}
 
 }

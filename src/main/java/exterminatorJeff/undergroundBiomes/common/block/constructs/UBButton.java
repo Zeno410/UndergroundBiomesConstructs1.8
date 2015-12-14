@@ -24,8 +24,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-// TODO Add the possibility to deactivate cobble and/or sedimentary button
-
 /**
  * 1 instance -> 8 variants + powered -> 16 metadatas<br/>
  * 6 facings<br/>

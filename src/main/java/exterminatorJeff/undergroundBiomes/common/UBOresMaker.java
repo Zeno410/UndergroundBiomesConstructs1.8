@@ -61,7 +61,7 @@ public final class UBOresMaker implements OreMaker {
 
 	@Override
 	public void requestOreSetup(Block baseOre) throws OreAlreadyUBified {
-		if (UndergroundBiomes.isPreInitDone && alreadySetup) {
+		if (UndergroundBiomes.isPreInitDone || alreadySetup) {
 			throw new OreAlreadyUBified(baseOre);
 		} else {
 			requests.add(new UBifyRequest(baseOre, baseOre.getUnlocalizedName().substring(5)));
@@ -70,7 +70,7 @@ public final class UBOresMaker implements OreMaker {
 
 	@Override
 	public void requestOreSetup(Block baseOre, String baseOreName) throws OreAlreadyUBified {
-		if (UndergroundBiomes.isPreInitDone && alreadySetup) {
+		if (UndergroundBiomes.isPreInitDone || alreadySetup) {
 			throw new OreAlreadyUBified(baseOre);
 		} else {
 			requests.add(new UBifyRequest(baseOre, baseOreName));
@@ -79,7 +79,7 @@ public final class UBOresMaker implements OreMaker {
 
 	@Override
 	public void requestOreSetup(Block baseOre, int meta, String baseOreName) throws OreAlreadyUBified {
-		if (UndergroundBiomes.isPreInitDone && alreadySetup) {
+		if (UndergroundBiomes.isPreInitDone || alreadySetup) {
 			throw new OreAlreadyUBified(baseOre);
 		} else {
 			requests.add(new UBifyRequestWithMetadata(baseOre, meta, baseOreName));
@@ -114,7 +114,7 @@ public final class UBOresMaker implements OreMaker {
 	 * This should not be called by anything other than Underground Biomes
 	 */
 	public void fulfillRequests() {
-		if (!alreadySetup && !requests.isEmpty()) {
+		if (!alreadySetup) {
 			alreadySetup = true;
 			for (UBifyRequest request : requests) {
 				request.fulfill();

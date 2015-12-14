@@ -22,8 +22,24 @@ public final class UBConfig {
 		return settings.buttonsOn.value();
 	}
 
+	public static final boolean cobbleButtonsOn() {
+		return settings.cobbleButtonsOn.value();
+	}
+
+	public static final boolean brickButtonsOn() {
+		return settings.brickButtonsOn.value();
+	}
+
 	public static final boolean stairsOn() {
 		return settings.stairsOn.value();
+	}
+
+	public static final boolean cobbleStairsOn() {
+		return settings.cobbleStairsOn.value();
+	}
+
+	public static final boolean brickStairsOn() {
+		return settings.brickStairsOn.value();
 	}
 
 	public static final boolean wallsOn() {
@@ -52,10 +68,6 @@ public final class UBConfig {
 
 	public static final boolean clearVarsForRecursiveGeneration() {
 		return settings.clearVarsForRecursiveGeneration.value();
-	}
-
-	public static final boolean forceConfigIds() {
-		return settings.forceConfigIds.value();
 	}
 
 	public static final boolean ubOres() {

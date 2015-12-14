@@ -1,5 +1,5 @@
 {
-    "parent":"block/chalk_cobble_stairs",
+    "parent":"undergroundbiomes:block/chalk_cobble_stairs",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

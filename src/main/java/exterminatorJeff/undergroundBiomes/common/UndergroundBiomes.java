@@ -1,85 +1,23 @@
 package exterminatorJeff.undergroundBiomes.common;
 
-import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
-
-import java.io.File;
-import java.lang.reflect.Constructor;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
-import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.ShapedRecipes;
-import net.minecraft.item.crafting.ShapelessRecipes;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.ForgeVersion;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
-import net.minecraftforge.event.terraingen.OreGenEvent;
-import net.minecraftforge.event.world.WorldEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLMissingMappingsEvent;
-import net.minecraftforge.fml.common.event.FMLModIdMappingEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameData;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
-import Zeno410Utils.Acceptor;
-import Zeno410Utils.ConfigManager;
-import Zeno410Utils.PlayerDetector;
 import Zeno410Utils.Zeno410Logger;
 
-import com.google.common.collect.ImmutableList;
-
-import exterminatorJeff.undergroundBiomes.api.UBAPIHook;
-import exterminatorJeff.undergroundBiomes.api.UndergroundBiomesSettings;
 import exterminatorJeff.undergroundBiomes.api.VanillaItemEntry;
-import exterminatorJeff.undergroundBiomes.common.block.IgneousCobble;
-import exterminatorJeff.undergroundBiomes.common.block.IgneousStone;
-import exterminatorJeff.undergroundBiomes.common.block.IgneousBrick;
-import exterminatorJeff.undergroundBiomes.common.block.UBStone;
-import exterminatorJeff.undergroundBiomes.common.block.MetamorphicCobble;
-import exterminatorJeff.undergroundBiomes.common.block.MetamorphicStone;
-import exterminatorJeff.undergroundBiomes.common.block.MetamorphicBrick;
-import exterminatorJeff.undergroundBiomes.common.block.SedimentaryStone;
-//import exterminatorJeff.undergroundBiomes.common.command.CommandOreDictifyStone;
-import exterminatorJeff.undergroundBiomes.common.item.ItemFossilPiece;
-import exterminatorJeff.undergroundBiomes.common.item.ItemLigniteCoal;
-import exterminatorJeff.undergroundBiomes.common.item.VanillaStoneRecipeManager;
-//import exterminatorJeff.undergroundBiomes.constructs.UndergroundBiomesConstructs;
-//import exterminatorJeff.undergroundBiomes.constructs.item.UBItemStairs;
-//import exterminatorJeff.undergroundBiomes.constructs.util.UBCodeLocations;
-import exterminatorJeff.undergroundBiomes.constructs.util.WatchList;
 
 @Mod(modid = UndergroundBiomes.MODID, name = UndergroundBiomes.NAME, version = UndergroundBiomes.VERSION)
 public class UndergroundBiomes {
@@ -100,43 +38,19 @@ public class UndergroundBiomes {
 	@SidedProxy(clientSide = "exterminatorJeff.undergroundBiomes.client.ClientProxy", serverSide = "exterminatorJeff.undergroundBiomes.common.CommonProxy")
 	public static CommonProxy proxy;
 
-	public static World world;
-
-	//
-
-	private WatchList defaultIDSetter;
-	private boolean runningConfigIDs = false;
-
-	public static long worldSeed;
-	private boolean gotWorldSeed;
-
-	public boolean gotWorldSeed() {
-		return gotWorldSeed;
-	}
-
 	public static List<ItemStack> nuggets;
 
-	private static String[] nuggetStrings = { "nuggetIron", "nuggetCopper", "nuggetTin", "nuggetSilver", "nuggetLead", "nuggetAluminium", "nuggetNaturalAluminium", "nuggetNickel", "nuggetPlatinum",
-			"nuggetElectrum", "nuggetZinc", };
+	@SuppressWarnings("unused")
+	private static String[] nuggetStrings = { "nuggetIron", "nuggetCopper", "nuggetTin", "nuggetSilver", "nuggetLead", "nuggetAluminium", "nuggetNaturalAluminium", "nuggetNickel",
+			"nuggetPlatinum", "nuggetElectrum", "nuggetZinc", };
 
-	// private final UBCodeLocations serverCodeLocations = new
-	// UBCodeLocations();
-	// private final UBCodeLocations clientCodeLocations = new
-	// UBCodeLocations();
-	//
-	// public final UBCodeLocations ubCodeLocations(World world) {
-	// if (world.isRemote) {
-	// return clientCodeLocations;
-	// } else {
-	// return serverCodeLocations;
-	// }
-	// }
-
-	// public UndergroundBiomesConstructs constructs;
-	
 	public UndergroundBiomes() {
-		
+
 	}
+
+	/*
+	 * Crash handling
+	 */
 
 	public static void throwIfTesting(RuntimeException toThrow) {
 		if (UBConfig.crashOnProblems())
@@ -153,6 +67,10 @@ public class UndergroundBiomes {
 		if (UBConfig.crashOnProblems())
 			throw toThrow;
 	}
+
+	/*
+	 * 
+	 */
 
 	public static String blockCategory = "block";
 	public static String itemCategory = "item";
@@ -172,7 +90,7 @@ public class UndergroundBiomes {
 	// private OreUBifyRequester oreRequester = new OreUBifyRequester();
 
 	// private PacketPipeline pipeline;
-	private PlayerDetector playerDetector;
+	// private PlayerDetector playerDetector;
 
 	// private UndergroundBiomesNetworking networking;
 
@@ -191,13 +109,9 @@ public class UndergroundBiomes {
 		nuggets = new ArrayList<ItemStack>();
 
 		nuggets.add(new ItemStack(VanillaItemEntry.goldNugget.getAssociatedItem(), 1, 0));
-		assert(nuggets.get(0) != null);
 
 		// register village change events
 
-		// constructs = new UndergroundBiomesConstructs();
-		// constructs.preInit(config);
-		//
 		// config.save();
 		// set up ores;
 
@@ -351,94 +265,6 @@ public class UndergroundBiomes {
 	// BiomeUndergroundDecorator.noMoreRedos();
 	// }
 
-	private boolean forceRemap;
-
-	// @EventHandler
-	// public void onMissingMapping(FMLMissingMappingsEvent event) {
-	// logger.info("missing mappings");
-	// forceRemap = false;
-	// for (FMLMissingMappingsEvent.MissingMapping missing : event.get()) {
-	// logger.info(missing.name + " " + missing.type.toString());
-	// if
-	// (missing.name.equalsIgnoreCase("UndergroundBiomes:sedimentaryStoneItem"))
-	// forceRemap = true;
-	// }
-	// }
-	//
-	// @EventHandler
-	// public void adjustMappings(FMLModIdMappingEvent event) {
-	//
-	// boolean oldIDs = false;
-	// logger.info("remapping");
-	// ImmutableList<FMLModIdMappingEvent.ModRemapping> remappings =
-	// event.remappedIds;
-	//
-	// Iterator<FMLModIdMappingEvent.ModRemapping> list = remappings.iterator();
-	// while (list.hasNext()) {
-	// FMLModIdMappingEvent.ModRemapping remapping = list.next();
-	// logger.info(remapping.tag + " from " + remapping.oldId + " to " +
-	// remapping.newId);
-	//
-	// // currently tags drop the fist letter
-	// if (remapping.tag.equals("inecraft:bed")) {
-	// if (remapping.oldId < 256)
-	// oldIDs = true;
-	// }
-	// // and presumably Forge will fix that
-	// if (remapping.tag.equals("Minecraft:bed")) {
-	// if (remapping.oldId < 256)
-	// oldIDs = true;
-	// } // currently tags drop the fist letter
-	// if (remapping.tag.equals("inecraft:wheat")) {
-	// if (remapping.oldId < 256)
-	// oldIDs = true;
-	// }
-	// // and presumably Forge will fix that
-	// if (remapping.tag.equals("Minecraft:wheat")) {
-	// if (remapping.oldId < 256)
-	// oldIDs = true;
-	// }
-	// if (remapping.tag.equals("ndergroundBiomes:stairs")) {
-	// if (remapping.newId == constructs.stoneStairID())
-	// oldIDs = true;
-	// }
-	// if (remapping.tag.equals("UndergroundBiomes:stairs")) {
-	// if (remapping.newId == constructs.stoneStairID())
-	// oldIDs = true;
-	// }
-	// if (remapping.tag.equals("UndergroundBiomes:igneousStone")) {
-	// if (remapping.newId > 2000)
-	// oldIDs = true;
-	// }
-	// if (remapping.tag.equals("ndergroundBiomes:igneousStone")) {
-	// if (remapping.newId > 2000)
-	// oldIDs = true;
-	// }
-	// if (remapping.tag.equals("UndergroundBiomes:metamorphicStone")) {
-	// if (remapping.newId > 2000)
-	// oldIDs = true;
-	// }
-	// if (remapping.tag.equals("ndergroundBiomes:metamorphicStone")) {
-	// if (remapping.newId > 2000)
-	// oldIDs = true;
-	// }
-	// }
-	// // logger.info("old IDs "+oldIDs);
-	// if (oldIDs) {
-	// this.forceConfigIDs();
-	//
-	// logger.info("forcing");
-	// this.runningConfigIDs = true;
-	// }
-	// if (forceRemap) {
-	// this.forceConfigIDs();
-	//
-	// logger.info("forcing");
-	// this.runningConfigIDs = true;
-	// forceRemap = false;
-	// }
-	// }
-
 	// public void addOreDicts() {
 	// OreDictionary.registerOre("stone", new ItemStack(igneousStone, 1,
 	// WILDCARD_VALUE));
@@ -564,63 +390,6 @@ public class UndergroundBiomes {
 	// return numReplaced;
 	// }
 
-	private static boolean containsMatch(boolean strict, ItemStack[] inputs, ItemStack... targets) {
-		try {
-			for (ItemStack input : inputs) {
-				for (ItemStack target : targets) {
-					if (OreDictionary.itemMatches(target, input, strict)) {
-						return true;
-					}
-				}
-			}
-		} catch (NullPointerException e) {
-			return false;
-		}
-		return false;
-	}
-
-	// Doing what Forge tells not to do
-	private static boolean containsMatchReplaceInplace(boolean strict, Object inputArrayOrList, ItemStack[] targets, Map<ItemStack, String> replacements) {
-		boolean replaced = false;
-		if (inputArrayOrList instanceof ArrayList) {
-			ArrayList inputList = (ArrayList) inputArrayOrList;
-			for (int i = 0; i < inputList.size(); i++) {
-				Object input = inputList.get(i);
-				if (input instanceof ItemStack) {
-					for (ItemStack target : targets) {
-						if (OreDictionary.itemMatches(target, (ItemStack) input, strict)) {
-							inputList.set(i, OreDictionary.getOres(replacements.get(target)));
-							replaced = true;
-						}
-					}
-				}
-			}
-		} else {
-			// Expect array
-			Object[] inputArray = (Object[]) inputArrayOrList;
-			for (int i = 0; i < inputArray.length; i++) {
-				Object input = inputArray[i];
-				if (input instanceof ItemStack) {
-					for (ItemStack target : targets) {
-						if (OreDictionary.itemMatches(target, (ItemStack) input, strict)) {
-							inputArray[i] = OreDictionary.getOres(replacements.get(target));
-							replaced = true;
-						}
-					}
-				}
-			}
-		}
-		return replaced;
-	}
-
-	public static long getWorldSeed() {
-		return worldSeed;
-	}
-
-	public static World getWorld() {
-		return world;
-	}
-
 	// public boolean inChunkGenerationAllowed(int id) {
 	// return dimensionManager.inChunkGenerationAllowed(id);
 	// }
@@ -680,126 +449,6 @@ public class UndergroundBiomes {
 		return ForgeVersion.getBuildVersion();
 	}
 
-	// private WatchList configList() {
-	// WatchList forcing = new WatchList();
-	// forcing.addChangeWithItem(igneousStoneID(), igneousStone);
-	// forcing.addChangeWithItem(metamorphicStoneID(), metamorphicStone);
-	// forcing.addChangeWithItem(sedimentaryStoneID(), sedimentaryStone);
-	// forcing.addChangeWithItem(igneousCobblestoneID(), igneousCobblestone);
-	// forcing.addChangeWithItem(metamorphicCobblestoneID(),
-	// metamorphicCobblestone);
-	// forcing.addChangeWithItem(igneousStoneBrickID(), igneousStoneBrick);
-	// forcing.addChangeWithItem(metamorphicStoneBrickID(),
-	// metamorphicStoneBrick);
-	//
-	// forcing.addChangeWithItem(igneousBrickSlabHalfID(),
-	// igneousBrickSlab.half);
-	// forcing.addChangeWithItem(igneousBrickSlabFullID(),
-	// igneousBrickSlab.full);
-	//
-	// forcing.addChangeWithItem(metamorphicBrickSlabHalfID(),
-	// metamorphicBrickSlab.half);
-	// forcing.addChangeWithItem(metamorphicBrickSlabFullID(),
-	// metamorphicBrickSlab.full);
-	//
-	// forcing.addChangeWithItem(igneousStoneSlabHalfID(),
-	// igneousStoneSlab.half);
-	// forcing.addChangeWithItem(igneousStoneSlabFullID(),
-	// igneousStoneSlab.full);
-	//
-	// forcing.addChangeWithItem(metamorphicStoneSlabHalfID(),
-	// metamorphicStoneSlab.half);
-	// forcing.addChangeWithItem(metamorphicStoneSlabFullID(),
-	// metamorphicStoneSlab.full);
-	//
-	// forcing.addChangeWithItem(igneousCobblestoneSlabHalfID(),
-	// igneousCobblestoneSlab.half);
-	// forcing.addChangeWithItem(igneousCobblestoneSlabFullID(),
-	// igneousCobblestoneSlab.full);
-	//
-	// forcing.addChangeWithItem(metamorphicCobblestoneSlabHalfID(),
-	// metamorphicCobblestoneSlab.half);
-	// forcing.addChangeWithItem(metamorphicCobblestoneSlabFullID(),
-	// metamorphicCobblestoneSlab.full);
-	//
-	// forcing.addChangeWithItem(sedimentaryStoneSlabHalfID(),
-	// sedimentaryStoneSlab.half);
-	// forcing.addChangeWithItem(sedimentaryStoneSlabFullID(),
-	// sedimentaryStoneSlab.full);
-	//
-	// forcing.addChange(constructs.stoneButtonID(),
-	// constructs.stoneButton().construct);
-	// forcing.addChange(constructs.stoneStairID(),
-	// constructs.stoneStair().construct);
-	// forcing.addChange(constructs.stoneWallID(),
-	// constructs.stoneWall().construct);
-	// return forcing;
-	// }
-	//
-	// private WatchList defaultIDs() {
-	// WatchList forcing = new WatchList();
-	// forcing.addWithItem(igneousStone);
-	// forcing.addWithItem(metamorphicStone);
-	// forcing.addWithItem(sedimentaryStone);
-	// forcing.addWithItem(igneousCobblestone);
-	// forcing.addWithItem(metamorphicCobblestone);
-	// forcing.addWithItem(igneousStoneBrick);
-	// forcing.addWithItem(metamorphicStoneBrick);
-	//
-	// forcing.addWithItem(igneousBrickSlab.half);
-	// forcing.addWithItem(igneousBrickSlab.full);
-	//
-	// forcing.addWithItem(metamorphicBrickSlab.half);
-	// forcing.addWithItem(metamorphicBrickSlab.full);
-	//
-	// forcing.addWithItem(igneousStoneSlab.half);
-	// forcing.addWithItem(igneousStoneSlab.full);
-	//
-	// forcing.addWithItem(metamorphicStoneSlab.half);
-	// forcing.addWithItem(metamorphicStoneSlab.full);
-	//
-	// forcing.addWithItem(igneousCobblestoneSlab.half);
-	// forcing.addWithItem(igneousCobblestoneSlab.full);
-	//
-	// forcing.addWithItem(metamorphicCobblestoneSlab.half);
-	// forcing.addWithItem(metamorphicCobblestoneSlab.full);
-	//
-	// forcing.addWithItem(sedimentaryStoneSlab.half);
-	// forcing.addWithItem(sedimentaryStoneSlab.full);
-	//
-	// forcing.add(constructs.stoneButton().construct);
-	// forcing.add(constructs.stoneStair().construct);
-	// forcing.add(constructs.stoneWall().construct);
-	// return forcing;
-	// }
-
-	// private void forceConfigIDs() {
-	// WatchList forcing = configList();
-	// try {
-	// for (String warning : forcing.problems()) {
-	// logger.info(warning);
-	// }
-	// logger.info("forcing config IDs ");
-	// forcing.redoAsNeeded();
-	// for (String warning : forcing.problems()) {
-	// logger.info(warning);
-	// }
-	// } catch (Exception e) {
-	// logger.info("redoerror " + e.toString());
-	// }
-	//
-	// WatchList check = new WatchList();
-	// check.add(constructs.stoneButton().construct);
-	// check.add(constructs.stoneStair().construct);
-	// check.add(constructs.stoneWall().construct);
-	// for (Item item : UBItemStairs.instances) {
-	// check.add(item);
-	// }
-	// for (String warning : check.problems()) {
-	// // logger.info(warning);
-	// }
-	// }
-	//
 	// public class EventWatcher {
 	// public void processEvent(FMLEvent event) {
 	// // logger.info(event.getEventType());

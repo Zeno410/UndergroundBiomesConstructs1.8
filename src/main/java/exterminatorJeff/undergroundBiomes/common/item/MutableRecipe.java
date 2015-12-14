@@ -14,6 +14,7 @@ public class MutableRecipe {
 	public static Logger logger = new Zeno410Logger("MutableRecipe").logger();
 	private IRecipe current;
 
+	@SuppressWarnings("unchecked")
 	public void set(IRecipe newRecipe) {
 		if (current != null) {
 			// remove current recipe

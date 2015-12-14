@@ -1,5 +1,5 @@
 {
-    "parent":"block/komatiite_brick_stairs",
+    "parent":"undergroundbiomes:block/komatiite_brick_stairs",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

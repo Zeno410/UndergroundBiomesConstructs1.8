@@ -1,5 +1,5 @@
 {
-    "parent":"block/chert_brick_stairs",
+    "parent":"undergroundbiomes:block/chert_brick_stairs",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

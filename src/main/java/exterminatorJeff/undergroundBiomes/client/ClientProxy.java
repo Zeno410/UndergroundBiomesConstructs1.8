@@ -90,8 +90,10 @@ public class ClientProxy extends CommonProxy {
 		// Stairs
 		UBEntries.IGNEOUS_STONE_STAIRS.registerModel();
 		UBEntries.IGNEOUS_COBBLE_STAIRS.registerModel();
+		UBEntries.IGNEOUS_BRICK_STAIRS.registerModel();
 		UBEntries.METAMORPHIC_STONE_STAIRS.registerModel();
 		UBEntries.METAMORPHIC_COBBLE_STAIRS.registerModel();
+		UBEntries.METAMORPHIC_BRICK_STAIRS.registerModel();
 		UBEntries.SEDIMENTARY_STONE_STAIRS.registerModel();
 	}
 

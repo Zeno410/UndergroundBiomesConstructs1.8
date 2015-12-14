@@ -1,5 +1,5 @@
 {
-    "parent":"block/greenschist_cobble_stairs",
+    "parent":"undergroundbiomes:block/greenschist_cobble_stairs",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],
