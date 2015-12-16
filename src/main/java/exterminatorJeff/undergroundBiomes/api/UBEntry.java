@@ -45,7 +45,8 @@ public abstract class UBEntry {
 	}
 
 	public final void registerModel() {
-		obj.registerModel();
+		if (isRegistered)
+			obj.registerModel();
 	}
 
 	public abstract Item getAssociatedItem();

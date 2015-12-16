@@ -11,11 +11,6 @@ public class MetamorphicCobble extends MetamorphicStone {
 	}
 
 	@Override
-	public UBStoneType getStoneType() {
-		return UBStoneType.METAMORPHIC_COBBLE;
-	}
-
-	@Override
 	public UBStoneStyle getStoneStyle() {
 		return UBStoneStyle.COBBLE;
 	}

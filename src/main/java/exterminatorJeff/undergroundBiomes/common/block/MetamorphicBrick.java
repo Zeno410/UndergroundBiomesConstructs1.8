@@ -10,11 +10,6 @@ public class MetamorphicBrick extends MetamorphicStone {
 	}
 
 	@Override
-	public UBStoneType getStoneType() {
-		return UBStoneType.METAMORPHIC_BRICK;
-	}
-
-	@Override
 	public UBStoneStyle getStoneStyle() {
 		return UBStoneStyle.BRICK;
 	}

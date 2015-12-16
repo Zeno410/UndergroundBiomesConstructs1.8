@@ -9,10 +9,6 @@ public class IgneousBrick extends IgneousStone {
 		replaceableByOre = false;
 	}
 
-	public UBStoneType getStoneType() {
-		return UBStoneType.IGNEOUS_BRICK;
-	}
-
 	@Override
 	public UBStoneStyle getStoneStyle() {
 		return UBStoneStyle.BRICK;

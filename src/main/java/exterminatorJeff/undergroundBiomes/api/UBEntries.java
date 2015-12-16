@@ -52,8 +52,13 @@ public final class UBEntries {
 	 * ----- Walls -----
 	 */
 
-	public static final BlockEntry IGNEOUS_WALL = new BlockEntry("igneous_wall");
-	public static final BlockEntry METAMORPHIC_WALL = new BlockEntry("metamorphic_wall");
+	public static final WallEntry IGNEOUS_STONE_WALL = new WallEntry(IGNEOUS_STONE);
+	public static final WallEntry IGNEOUS_COBBLE_WALL = new WallEntry(IGNEOUS_COBBLE);
+	public static final WallEntry IGNEOUS_BRICK_WALL = new WallEntry(IGNEOUS_BRICK);
+	public static final WallEntry METAMORPHIC_STONE_WALL = new WallEntry(METAMORPHIC_STONE);
+	public static final WallEntry METAMORPHIC_COBBLE_WALL = new WallEntry(METAMORPHIC_COBBLE);
+	public static final WallEntry METAMORPHIC_BRICK_WALL = new WallEntry(METAMORPHIC_BRICK);
+	public static final WallEntry SEDIMENTARY_STONE_WALL = new WallEntry(SEDIMENTARY_STONE);
 
 	/*
 	 * ------ Stairs ------

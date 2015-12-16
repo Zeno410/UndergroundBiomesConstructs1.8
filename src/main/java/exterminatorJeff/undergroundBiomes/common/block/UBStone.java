@@ -1,6 +1,5 @@
 package exterminatorJeff.undergroundBiomes.common.block;
 
-import java.util.HashMap;
 import java.util.Random;
 
 import com.google.common.base.Predicate;
@@ -18,13 +17,11 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import Zeno410Utils.Acceptor;
 import exterminatorJeff.undergroundBiomes.api.UBEntry;
 import exterminatorJeff.undergroundBiomes.api.Variable;
-import exterminatorJeff.undergroundBiomes.client.UBOreOverlaysRegistry;
 import exterminatorJeff.undergroundBiomes.common.UBConfig;
 import exterminatorJeff.undergroundBiomes.common.UBCreativeTab;
 import exterminatorJeff.undergroundBiomes.common.block.SedimentaryStone.SedimentaryStoneType;
@@ -32,7 +29,7 @@ import exterminatorJeff.undergroundBiomes.common.block.SedimentaryStone.Sediment
 public abstract class UBStone extends Block implements Variable {
 
 	public static enum UBStoneType {
-		IGNEOUS_STONE, IGNEOUS_COBBLE, IGNEOUS_BRICK, METAMORPHIC_STONE, METAMORPHIC_COBBLE, METAMORPHIC_BRICK, SEDIMENTARY_STONE;
+		IGNEOUS, METAMORPHIC, SEDIMENTARY;
 
 		@Override
 		public String toString() {
@@ -49,18 +46,6 @@ public abstract class UBStone extends Block implements Variable {
 			return name().toLowerCase();
 		}
 	}
-
-	/**
-	 * All ub stones models locations<br/>
-	 * Variant name -> Model location
-	 */
-	public static final HashMap<String, ResourceLocation> stoneModels = new HashMap<>();
-
-	/**
-	 * Stones textures<br/>
-	 * Variant name -> Texture location
-	 */
-	public static final HashMap<String, ResourceLocation> stoneTextures = new HashMap<>();
 
 	/*
 	 * 
@@ -204,8 +189,6 @@ public abstract class UBStone extends Block implements Variable {
 		for (int i = 0; i < getNbVariants(); i++) {
 			ModelBakery.addVariantName(entry.getAssociatedItem(), getModelName(i));
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(entry.getAssociatedItem(), i, new ModelResourceLocation(getModelName(i), "inventory"));
-			stoneModels.put(getVariantName(i), new ModelResourceLocation(getModelName(i), "inventory"));
-			stoneTextures.put(getVariantName(i), new ResourceLocation(UBOreOverlaysRegistry.BLOCKS_TX_PATH + getVariantName(i)));
 		}
 	}
 

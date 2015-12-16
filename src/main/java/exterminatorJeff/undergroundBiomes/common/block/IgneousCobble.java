@@ -10,10 +10,6 @@ public class IgneousCobble extends IgneousStone {
 		replaceableByOre = false;
 	}
 
-	public UBStoneType getStoneType() {
-		return UBStoneType.IGNEOUS_COBBLE;
-	}
-
 	@Override
 	public UBStoneStyle getStoneStyle() {
 		return UBStoneStyle.COBBLE;

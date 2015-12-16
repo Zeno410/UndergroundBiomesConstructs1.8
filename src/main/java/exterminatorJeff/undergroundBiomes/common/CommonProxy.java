@@ -9,6 +9,7 @@ import exterminatorJeff.undergroundBiomes.api.UBAPIHook;
 import exterminatorJeff.undergroundBiomes.api.UBEntries;
 import exterminatorJeff.undergroundBiomes.api.VanillaBlockEntry;
 import exterminatorJeff.undergroundBiomes.api.VanillaItemEntry;
+import exterminatorJeff.undergroundBiomes.api.WallEntry;
 import exterminatorJeff.undergroundBiomes.client.UBOreOverlaysRegistry;
 import exterminatorJeff.undergroundBiomes.common.block.IgneousBrick;
 import exterminatorJeff.undergroundBiomes.common.block.MetamorphicCobble;
@@ -31,7 +32,12 @@ import exterminatorJeff.undergroundBiomes.common.block.constructs.UBStairsMetamo
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBStairsMetamorphicCobble;
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBStairsSedimentary;
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBWallIgneous;
+import exterminatorJeff.undergroundBiomes.common.block.constructs.UBWallIgneousBrick;
+import exterminatorJeff.undergroundBiomes.common.block.constructs.UBWallIgneousCobble;
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBWallMetamorphic;
+import exterminatorJeff.undergroundBiomes.common.block.constructs.UBWallMetamorphicBrick;
+import exterminatorJeff.undergroundBiomes.common.block.constructs.UBWallMetamorphicCobble;
+import exterminatorJeff.undergroundBiomes.common.block.constructs.UBWallSedimentary;
 import exterminatorJeff.undergroundBiomes.common.block.slab.UBIgneousBrickSlabDouble;
 import exterminatorJeff.undergroundBiomes.common.block.slab.UBIgneousBrickSlabHalf;
 import exterminatorJeff.undergroundBiomes.common.block.slab.UBIgneousCobbleSlabDouble;
@@ -88,11 +94,11 @@ public class CommonProxy {
 	/**
 	 * 
 	 */
-
 	private final void createBlocks() {
 		/*
 		 * Blocks
 		 */
+
 		UBEntries.IGNEOUS_STONE.register(new IgneousStone());
 		UBEntries.IGNEOUS_COBBLE.register(new IgneousCobble());
 		UBEntries.IGNEOUS_BRICK.register(new IgneousBrick());
@@ -100,9 +106,11 @@ public class CommonProxy {
 		UBEntries.METAMORPHIC_COBBLE.register(new MetamorphicCobble());
 		UBEntries.METAMORPHIC_BRICK.register(new MetamorphicBrick());
 		UBEntries.SEDIMENTARY_STONE.register(new SedimentaryStone());
+
 		/*
 		 * Slabs
 		 */
+
 		UBEntries.IGNEOUS_BRICK_SLAB.register(new UBSlabPair(new UBIgneousBrickSlabHalf(UBEntries.IGNEOUS_BRICK_SLAB), new UBIgneousBrickSlabDouble(UBEntries.IGNEOUS_BRICK_SLAB)));
 		UBEntries.METAMORPHIC_BRICK_SLAB
 				.register(new UBSlabPair(new UBMetamorphicBrickSlabHalf(UBEntries.METAMORPHIC_BRICK_SLAB), new UBMetamorphicBrickSlabDouble(UBEntries.METAMORPHIC_BRICK_SLAB)));
@@ -115,66 +123,103 @@ public class CommonProxy {
 				.register(new UBSlabPair(new UBMetamorphicCobbleSlabHalf(UBEntries.METAMORPHIC_COBBLE_SLAB), new UBMetamorphicCobbleSlabDouble(UBEntries.METAMORPHIC_COBBLE_SLAB)));
 		UBEntries.SEDIMENTARY_STONE_SLAB
 				.register(new UBSlabPair(new UBSedimentaryStoneSlabHalf(UBEntries.SEDIMENTARY_STONE_SLAB), new UBSedimentaryStoneSlabDouble(UBEntries.SEDIMENTARY_STONE_SLAB)));
+
 		/*
 		 * Buttons
 		 */
+
 		ButtonEntry e1;
-		(e1 = UBEntries.IGNEOUS_STONE_BUTTON)
-				.register(new UBButtonGroup(e1, 
-						new UBButtonIgneous(e1, EnumFacing.DOWN), new UBButtonIgneous(e1, EnumFacing.EAST), new UBButtonIgneous(e1, EnumFacing.NORTH),
-						new UBButtonIgneous(e1, EnumFacing.SOUTH), new UBButtonIgneous(e1, EnumFacing.UP), new UBButtonIgneous(e1, EnumFacing.WEST)));
-		(e1 = UBEntries.METAMORPHIC_STONE_BUTTON).register(
-				new UBButtonGroup(e1, 
-						new UBButtonMetamorphic(e1, EnumFacing.DOWN), new UBButtonMetamorphic(e1, EnumFacing.EAST), new UBButtonMetamorphic(e1, EnumFacing.NORTH),
-						new UBButtonMetamorphic(e1, EnumFacing.SOUTH), new UBButtonMetamorphic(e1, EnumFacing.UP), new UBButtonMetamorphic(e1, EnumFacing.WEST)));
-		if (UBConfig.cobbleButtonsOn()) {
-			(e1 = UBEntries.IGNEOUS_COBBLE_BUTTON).register(new UBButtonGroup(e1, 
-					new UBButtonIgneousCobble(e1, EnumFacing.DOWN), new UBButtonIgneousCobble(e1, EnumFacing.EAST), new UBButtonIgneousCobble(e1, EnumFacing.NORTH),
-					new UBButtonIgneousCobble(e1, EnumFacing.SOUTH), new UBButtonIgneousCobble(e1, EnumFacing.UP), new UBButtonIgneousCobble(e1, EnumFacing.WEST)));
-			(e1 = UBEntries.METAMORPHIC_COBBLE_BUTTON).register(new UBButtonGroup(e1, 
-					new UBButtonMetamorphicCobble(e1, EnumFacing.DOWN), new UBButtonMetamorphicCobble(e1, EnumFacing.EAST), new UBButtonMetamorphicCobble(e1, EnumFacing.NORTH),
-					new UBButtonMetamorphicCobble(e1, EnumFacing.SOUTH),	new UBButtonMetamorphicCobble(e1, EnumFacing.UP), new UBButtonMetamorphicCobble(e1, EnumFacing.WEST)));
-		}
 		// TODO brick buttons
-		UBEntries.SEDIMENTARY_STONE_BUTTON.register(new UBButtonGroup(UBEntries.SEDIMENTARY_STONE_BUTTON,
-				new UBButtonSedimentary(UBEntries.SEDIMENTARY_STONE_BUTTON, EnumFacing.DOWN), new UBButtonSedimentary(UBEntries.SEDIMENTARY_STONE_BUTTON, EnumFacing.EAST),
-				new UBButtonSedimentary(UBEntries.SEDIMENTARY_STONE_BUTTON, EnumFacing.NORTH), new UBButtonSedimentary(UBEntries.SEDIMENTARY_STONE_BUTTON, EnumFacing.SOUTH),
-				new UBButtonSedimentary(UBEntries.SEDIMENTARY_STONE_BUTTON, EnumFacing.UP), new UBButtonSedimentary(UBEntries.SEDIMENTARY_STONE_BUTTON, EnumFacing.WEST)));
+		if (UBConfig.buttonsOn()) {
+			if (UBConfig.igneousButtonsOn()) {
+				if (UBConfig.stoneButtonsOn())
+					(e1 = UBEntries.IGNEOUS_STONE_BUTTON).register(
+							new UBButtonGroup(e1, new UBButtonIgneous(e1, EnumFacing.DOWN), new UBButtonIgneous(e1, EnumFacing.EAST), new UBButtonIgneous(e1, EnumFacing.NORTH),
+									new UBButtonIgneous(e1, EnumFacing.SOUTH), new UBButtonIgneous(e1, EnumFacing.UP), new UBButtonIgneous(e1, EnumFacing.WEST)));
+				if (UBConfig.cobbleButtonsOn())
+					(e1 = UBEntries.IGNEOUS_COBBLE_BUTTON).register(new UBButtonGroup(e1, new UBButtonIgneousCobble(e1, EnumFacing.DOWN),
+							new UBButtonIgneousCobble(e1, EnumFacing.EAST), new UBButtonIgneousCobble(e1, EnumFacing.NORTH), new UBButtonIgneousCobble(e1, EnumFacing.SOUTH),
+							new UBButtonIgneousCobble(e1, EnumFacing.UP), new UBButtonIgneousCobble(e1, EnumFacing.WEST)));
+			}
+			if (UBConfig.metamorphicButtonsOn()) {
+				if (UBConfig.stoneButtonsOn())
+					(e1 = UBEntries.METAMORPHIC_STONE_BUTTON).register(new UBButtonGroup(e1, new UBButtonMetamorphic(e1, EnumFacing.DOWN),
+							new UBButtonMetamorphic(e1, EnumFacing.EAST), new UBButtonMetamorphic(e1, EnumFacing.NORTH), new UBButtonMetamorphic(e1, EnumFacing.SOUTH),
+							new UBButtonMetamorphic(e1, EnumFacing.UP), new UBButtonMetamorphic(e1, EnumFacing.WEST)));
+				if (UBConfig.cobbleButtonsOn())
+					(e1 = UBEntries.METAMORPHIC_COBBLE_BUTTON)
+							.register(new UBButtonGroup(e1, new UBButtonMetamorphicCobble(e1, EnumFacing.DOWN), new UBButtonMetamorphicCobble(e1, EnumFacing.EAST),
+									new UBButtonMetamorphicCobble(e1, EnumFacing.NORTH), new UBButtonMetamorphicCobble(e1, EnumFacing.SOUTH),
+									new UBButtonMetamorphicCobble(e1, EnumFacing.UP), new UBButtonMetamorphicCobble(e1, EnumFacing.WEST)));
+			}
+			if (UBConfig.sedimentaryButtonsOn()) {
+				(e1 = UBEntries.SEDIMENTARY_STONE_BUTTON).register(new UBButtonGroup(e1, new UBButtonSedimentary(e1, EnumFacing.DOWN), new UBButtonSedimentary(e1, EnumFacing.EAST),
+						new UBButtonSedimentary(e1, EnumFacing.NORTH), new UBButtonSedimentary(e1, EnumFacing.SOUTH), new UBButtonSedimentary(e1, EnumFacing.UP),
+						new UBButtonSedimentary(e1, EnumFacing.WEST)));
+			}
+		}
+
 		/*
 		 * Walls
 		 */
-		UBEntries.IGNEOUS_WALL.register(new UBWallIgneous(UBEntries.IGNEOUS_WALL));
-		UBEntries.METAMORPHIC_WALL.register(new UBWallMetamorphic(UBEntries.METAMORPHIC_WALL));
-		// TODO Why not sedimentary walls ?
+
+		WallEntry e2;
+		if (UBConfig.wallsOn()) {
+			if (UBConfig.igneousWallsOn()) {
+				if (UBConfig.stoneWallsOn())
+					(e2 = UBEntries.IGNEOUS_STONE_WALL).register(new UBWallIgneous(e2));
+				if (UBConfig.cobbleWallsOn())
+					(e2 = UBEntries.IGNEOUS_COBBLE_WALL).register(new UBWallIgneousCobble(e2));
+				if (UBConfig.brickWallsOn())
+					(e2 = UBEntries.IGNEOUS_BRICK_WALL).register(new UBWallIgneousBrick(e2));
+			}
+			if (UBConfig.metamorphicWallsOn()) {
+				if (UBConfig.stoneWallsOn())
+					(e2 = UBEntries.METAMORPHIC_STONE_WALL).register(new UBWallMetamorphic(e2));
+				if (UBConfig.cobbleWallsOn())
+					(e2 = UBEntries.METAMORPHIC_COBBLE_WALL).register(new UBWallMetamorphicCobble(e2));
+				if (UBConfig.brickWallsOn())
+					(e2 = UBEntries.METAMORPHIC_BRICK_WALL).register(new UBWallMetamorphicBrick(e2));
+			}
+			if (UBConfig.sedimentaryWallsOn()) {
+				(e2 = UBEntries.SEDIMENTARY_STONE_WALL).register(new UBWallSedimentary(e2));
+			}
+		}
+
 		/*
 		 * Stairs
 		 */
-		StairsEntry e2;
-		(e2 = UBEntries.IGNEOUS_STONE_STAIRS).register(new UBStairsGroup(e2, 
-				new UBStairsIgneous(e2, EnumFacing.EAST), new UBStairsIgneous(e2, EnumFacing.NORTH),
-				new UBStairsIgneous(e2, EnumFacing.SOUTH), new UBStairsIgneous(e2, EnumFacing.WEST)));
-		(e2 = UBEntries.METAMORPHIC_STONE_STAIRS).register(new UBStairsGroup(e2, 
-				new UBStairsMetamorphic(e2, EnumFacing.EAST), new UBStairsMetamorphic(e2, EnumFacing.NORTH),
-				new UBStairsMetamorphic(e2, EnumFacing.SOUTH), new UBStairsMetamorphic(e2, EnumFacing.WEST)));
-		if (UBConfig.cobbleStairsOn()) {
-			(e2 = UBEntries.IGNEOUS_COBBLE_STAIRS).register(new UBStairsGroup(e2, 
-					new UBStairsIgneousCobble(e2, EnumFacing.EAST), new UBStairsIgneousCobble(e2, EnumFacing.NORTH),
-					new UBStairsIgneousCobble(e2, EnumFacing.SOUTH), new UBStairsIgneousCobble(e2, EnumFacing.WEST)));
-			(e2 = UBEntries.METAMORPHIC_COBBLE_STAIRS).register(new UBStairsGroup(e2, 
-					new UBStairsMetamorphicCobble(e2, EnumFacing.EAST), new UBStairsMetamorphicCobble(e2, EnumFacing.NORTH),
-					new UBStairsMetamorphicCobble(e2, EnumFacing.SOUTH), new UBStairsMetamorphicCobble(e2, EnumFacing.WEST)));
+
+		StairsEntry e3;
+		if (UBConfig.stairsOn()) {
+			if (UBConfig.igneousStairsOn()) {
+				if (UBConfig.stoneStairsOn())
+					(e3 = UBEntries.IGNEOUS_STONE_STAIRS).register(new UBStairsGroup(e3, new UBStairsIgneous(e3, EnumFacing.EAST), new UBStairsIgneous(e3, EnumFacing.NORTH),
+							new UBStairsIgneous(e3, EnumFacing.SOUTH), new UBStairsIgneous(e3, EnumFacing.WEST)));
+				if (UBConfig.cobbleStairsOn())
+					(e3 = UBEntries.IGNEOUS_COBBLE_STAIRS).register(new UBStairsGroup(e3, new UBStairsIgneousCobble(e3, EnumFacing.EAST),
+							new UBStairsIgneousCobble(e3, EnumFacing.NORTH), new UBStairsIgneousCobble(e3, EnumFacing.SOUTH), new UBStairsIgneousCobble(e3, EnumFacing.WEST)));
+				if (UBConfig.brickStairsOn())
+					(e3 = UBEntries.IGNEOUS_BRICK_STAIRS).register(new UBStairsGroup(e3, new UBStairsIgneousBrick(e3, EnumFacing.EAST),
+							new UBStairsIgneousBrick(e3, EnumFacing.NORTH), new UBStairsIgneousBrick(e3, EnumFacing.SOUTH), new UBStairsIgneousBrick(e3, EnumFacing.WEST)));
+			}
+			if (UBConfig.metamorphicStairsOn()) {
+				if (UBConfig.stoneStairsOn())
+					(e3 = UBEntries.METAMORPHIC_STONE_STAIRS).register(new UBStairsGroup(e3, new UBStairsMetamorphic(e3, EnumFacing.EAST),
+							new UBStairsMetamorphic(e3, EnumFacing.NORTH), new UBStairsMetamorphic(e3, EnumFacing.SOUTH), new UBStairsMetamorphic(e3, EnumFacing.WEST)));
+				if (UBConfig.cobbleStairsOn())
+					(e3 = UBEntries.METAMORPHIC_COBBLE_STAIRS)
+							.register(new UBStairsGroup(e3, new UBStairsMetamorphicCobble(e3, EnumFacing.EAST), new UBStairsMetamorphicCobble(e3, EnumFacing.NORTH),
+									new UBStairsMetamorphicCobble(e3, EnumFacing.SOUTH), new UBStairsMetamorphicCobble(e3, EnumFacing.WEST)));
+				if (UBConfig.brickStairsOn())
+					(e3 = UBEntries.METAMORPHIC_BRICK_STAIRS)
+							.register(new UBStairsGroup(e3, new UBStairsMetamorphicBrick(e3, EnumFacing.EAST), new UBStairsMetamorphicBrick(e3, EnumFacing.NORTH),
+									new UBStairsMetamorphicBrick(e3, EnumFacing.SOUTH), new UBStairsMetamorphicBrick(e3, EnumFacing.WEST)));
+			}
+			if (UBConfig.sedimentaryStairsOn())
+				(e3 = UBEntries.SEDIMENTARY_STONE_STAIRS).register(new UBStairsGroup(e3, new UBStairsSedimentary(e3, EnumFacing.EAST),
+						new UBStairsSedimentary(e3, EnumFacing.NORTH), new UBStairsSedimentary(e3, EnumFacing.SOUTH), new UBStairsSedimentary(e3, EnumFacing.WEST)));
 		}
-		if (UBConfig.brickStairsOn()) {
-			(e2 = UBEntries.IGNEOUS_BRICK_STAIRS).register(new UBStairsGroup(e2,
-					new UBStairsIgneousBrick(e2, EnumFacing.EAST), new UBStairsIgneousBrick(e2, EnumFacing.NORTH),
-					new UBStairsIgneousBrick(e2, EnumFacing.SOUTH), new UBStairsIgneousBrick(e2, EnumFacing.WEST)));
-			(e2 = UBEntries.METAMORPHIC_BRICK_STAIRS).register(new UBStairsGroup(e2,
-					new UBStairsMetamorphicBrick(e2, EnumFacing.EAST), new UBStairsMetamorphicBrick(e2, EnumFacing.NORTH),
-					new UBStairsMetamorphicBrick(e2, EnumFacing.SOUTH), new UBStairsMetamorphicBrick(e2, EnumFacing.WEST)));
-		}
-		(e2 = UBEntries.SEDIMENTARY_STONE_STAIRS).register(new UBStairsGroup(e2,
-				new UBStairsSedimentary(e2, EnumFacing.EAST), new UBStairsSedimentary(e2, EnumFacing.NORTH),
-				new UBStairsSedimentary(e2, EnumFacing.SOUTH), new UBStairsSedimentary(e2, EnumFacing.WEST)));
 	}
 
 	private final void createItems() {

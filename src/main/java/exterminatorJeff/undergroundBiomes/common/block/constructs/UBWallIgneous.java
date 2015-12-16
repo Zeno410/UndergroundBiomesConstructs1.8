@@ -12,7 +12,7 @@ public class UBWallIgneous extends UBWall {
 
 	@Override
 	protected UBStone baseStone() {
-		return (UBStone) UBEntries.IGNEOUS_COBBLE.getAssociatedBlock();
+		return (UBStone) UBEntries.IGNEOUS_STONE.getAssociatedBlock();
 	}
 
 }

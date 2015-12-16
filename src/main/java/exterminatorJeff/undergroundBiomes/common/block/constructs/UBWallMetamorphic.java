@@ -12,7 +12,7 @@ public class UBWallMetamorphic extends UBWall {
 
 	@Override
 	protected UBStone baseStone() {
-		return (UBStone) UBEntries.METAMORPHIC_COBBLE.getAssociatedBlock();
+		return (UBStone) UBEntries.METAMORPHIC_STONE.getAssociatedBlock();
 	}
 
 }

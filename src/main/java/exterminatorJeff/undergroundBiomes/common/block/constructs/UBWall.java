@@ -58,10 +58,10 @@ public abstract class UBWall extends Block implements Variable {
 		this.entry = entry;
 
 		setCreativeTab(UBCreativeTab.UB_BLOCKS_TAB);
-		setDefaultState(blockState.getBaseState().withProperty(baseStone().getVariantProperty(), baseStone().getVariantEnum()[0]).withProperty(EAST, Boolean.FALSE).withProperty(NORTH, Boolean.FALSE)
-				.withProperty(SOUTH, Boolean.FALSE).withProperty(UP, Boolean.FALSE).withProperty(WEST, Boolean.FALSE));
+		setDefaultState(blockState.getBaseState().withProperty(baseStone().getVariantProperty(), baseStone().getVariantEnum()[0]).withProperty(EAST, Boolean.FALSE)
+				.withProperty(NORTH, Boolean.FALSE).withProperty(SOUTH, Boolean.FALSE).withProperty(UP, Boolean.FALSE).withProperty(WEST, Boolean.FALSE));
 
-		name = this.entry.internal(); //
+		name = this.entry.internal();
 		setUnlocalizedName(name);
 	}
 
@@ -85,7 +85,7 @@ public abstract class UBWall extends Block implements Variable {
 	@Override
 	public void getSubBlocks(Item itemIn, CreativeTabs tab, List list) {
 		for (int i = 0; i < baseStone().getNbVariants(); i++) {
-			list.add(new ItemStack(this, 1, i));
+			list.add(new ItemStack(itemIn, 1, i));
 		}
 	}
 
@@ -111,6 +111,9 @@ public abstract class UBWall extends Block implements Variable {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public String getVariantName(int meta) {
 		return baseStone().getVariantName(meta);
@@ -118,7 +121,7 @@ public abstract class UBWall extends Block implements Variable {
 
 	@Override
 	public String getModelName(int meta) {
-		return UndergroundBiomes.MODID + ":" + getVariantName(meta) + "_wall";
+		return UndergroundBiomes.MODID + ":" + getVariantName(meta) + "_" + baseStone().getStoneStyle() + "_wall";
 	}
 
 	/*
@@ -182,8 +185,11 @@ public abstract class UBWall extends Block implements Variable {
 
 	public boolean canConnectTo(IBlockAccess worldIn, BlockPos pos) {
 		Block block = worldIn.getBlockState(pos).getBlock();
+		if (block instanceof UBWall)
+			return true;
 		return block == Blocks.barrier ? false
-				: (block != this && !(block instanceof BlockFenceGate) ? (block.getMaterial().isOpaque() && block.isFullCube() ? block.getMaterial() != Material.gourd : false) : true);
+				: (block != this && !(block instanceof BlockFenceGate) ? (block.getMaterial().isOpaque() && block.isFullCube() ? block.getMaterial() != Material.gourd : false)
+						: true);
 	}
 
 	@Override
@@ -214,6 +220,8 @@ public abstract class UBWall extends Block implements Variable {
 			super(block);
 			if (!(block instanceof UBWall))
 				throw new RuntimeException(String.format("The given Block %s is not an instance of UBWall !", block.getUnlocalizedName()));
+			setMaxDamage(0);
+			setHasSubtypes(true);
 		}
 
 		@Override

@@ -9,7 +9,7 @@ import Zeno410Utils.Settings;
 import Zeno410Utils.Streamer;
 
 /**
- *
+ * TODO Translate the config
  * @author Zeno410
  */
 public final class UndergroundBiomesSettings extends Settings {
@@ -44,18 +44,24 @@ public final class UndergroundBiomesSettings extends Settings {
 	 */
 
 	public final Mutable<Boolean> buttonsOn = general().booleanSetting("UndergroundBiomesButtons", true, "Provide buttons for Underground Biomes blocks");
-	public final Mutable<Boolean> cobbleButtonsOn = general().booleanSetting("UndergroundBiomesCobbleButtons", true, "Activate cobble buttons");
-	public final Mutable<Boolean> brickButtonsOn = general().booleanSetting("UndergroundBiomesBrickButtons", false, "Activate brick buttons");
+	public final Mutable<Integer> buttonsTypes = general().intSetting("UndergroundBiomesButtonsTypes", 7, "What types of stone for buttons : +1 for igneous, +2 for metamorphic and +4 for sedimentary\nDefault : 7 -> all");
+	public final Mutable<Integer> buttonsStyles = general().intSetting("UndergroundBiomesButtonsStyles", 3, "What styles of stone for buttons : +1 for stone, +2 for cobble and +4 for brick\nDefault : 3 -> stone and cobble");
 
 	/*
 	 * Stairs
 	 */
 
 	public final Mutable<Boolean> stairsOn = general().booleanSetting("UndergroundBiomesStairs", true, "Provide Stairs for Underground Biomes blocks");
-	public final Mutable<Boolean> cobbleStairsOn = general().booleanSetting("UndergroundBiomesCobbleStairs", true, "Activate cobble stairs");
-	public final Mutable<Boolean> brickStairsOn = general().booleanSetting("UndergroundBiomesBrickStairs", true, "Activate brick stairs");
+	public final Mutable<Integer> stairsTypes = general().intSetting("UndergroundBiomesStairsTypes", 7, "What types of stone for stairs : +1 for igneous, +2 for metamorphic and +4 for sedimentary\nDefault : 7 -> all");
+	public final Mutable<Integer> stairsStyles = general().intSetting("UndergroundBiomesStairsStyles", 7, "What styles of stone for stairs : +1 for stone, +2 for cobble and +4 for brick\nDefault : 7 -> all");
 
+	/*
+	 * Walls
+	 */
+	
 	public final Mutable<Boolean> wallsOn = general().booleanSetting("UndergroundBiomesWalls", true, "Provide Walls for Underground Biomes blocks");
+	public final Mutable<Integer> wallsTypes = general().intSetting("UndergroundBiomesWallsTypes", 7, "What types of stone for walls : +1 for igneous, +2 for metamorphic and +4 for sedimentary\nDefault : 7 -> all");
+	public final Mutable<Integer> wallsStyles = general().intSetting("UndergroundBiomesWallsStyles", 7, "What styles of stone for walls : +1 for stone, +2 for cobble and +4 for brick\nDefault : 7 -> all");
 
 	public final Mutable<Boolean> harmoniousStrata = general().booleanSetting("HarmoniousStrata", false, "Avoid jarring strata transitions");
 

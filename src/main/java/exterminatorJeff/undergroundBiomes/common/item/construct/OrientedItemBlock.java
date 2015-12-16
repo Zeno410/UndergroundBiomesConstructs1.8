@@ -20,6 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -58,6 +59,11 @@ public abstract class OrientedItemBlock extends Item implements Variable {
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		return super.getUnlocalizedName(stack) + "." + baseStone.getVariantName(stack.getMetadata());
+	}
+
+	@Override
+	public String getItemStackDisplayName(ItemStack stack) {
+		return ("" + StatCollector.translateToLocal("tile." + entry.internal() + "." + baseStone.getVariantName(stack.getMetadata()) + ".name")).trim();
 	}
 
 	@Override

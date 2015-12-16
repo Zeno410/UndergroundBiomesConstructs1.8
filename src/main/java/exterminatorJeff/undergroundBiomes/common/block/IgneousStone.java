@@ -30,7 +30,8 @@ public class IgneousStone extends UBStone {
 	public static final IgneousStoneType[] IGNEOUS_STONE_TYPES = IgneousStoneType.values();
 
 	public static enum IgneousStoneType implements IStringSerializable {
-		RED_GRANITE(1.7f, 1.42f), BLACK_GRANITE(1.6f, 1.39f), RHYOLITE(1.3f, 1.26f), ANDESITE(1.4f, 1.31f), GABBRO(1.0f, 1.0f), BASALT(1.4f, 1.31f), KOMATIITE(1.5f, 1.35f), DACITE(1.2f, 1.2f);
+		RED_GRANITE(1.7f, 1.42f), BLACK_GRANITE(1.6f, 1.39f), RHYOLITE(1.3f, 1.26f), ANDESITE(1.4f, 1.31f), GABBRO(1.0f, 1.0f), BASALT(1.4f, 1.31f), KOMATIITE(1.5f,
+				1.35f), DACITE(1.2f, 1.2f);
 
 		private float hardness;
 		private float resistance;
@@ -103,7 +104,7 @@ public class IgneousStone extends UBStone {
 	}
 
 	public UBStoneType getStoneType() {
-		return UBStoneType.IGNEOUS_STONE;
+		return UBStoneType.IGNEOUS;
 	}
 
 	public UBStoneStyle getStoneStyle() {
@@ -156,7 +157,8 @@ public class IgneousStone extends UBStone {
 
 	@Override
 	public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
-		return super.getExplosionResistance(world, pos, exploder, explosion) * ((IgneousStoneType) getActualState(getDefaultState(), world, pos).getValue(IGNEOUS_TYPE)).getResistance();
+		return super.getExplosionResistance(world, pos, exploder, explosion)
+				* ((IgneousStoneType) getActualState(getDefaultState(), world, pos).getValue(IGNEOUS_TYPE)).getResistance();
 	}
 
 	@Override

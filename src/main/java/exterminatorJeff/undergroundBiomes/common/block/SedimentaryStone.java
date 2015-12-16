@@ -32,7 +32,8 @@ public class SedimentaryStone extends UBStone {
 	public static final SedimentaryStoneType[] SEDIMENTARY_STONE_TYPES = SedimentaryStoneType.values();
 
 	public static enum SedimentaryStoneType implements IStringSerializable {
-		LIMESTONE(0.5f, 0.29f), CHALK(0.5f, 0.29f), SHALE(0.5f, 0.29f), SILTSTONE(0.6f, 0.4f), LIGNITE(0.5f, 0.29f), DOLOMITE(0.5f, 0.29f), GREYWACKE(1.0f, 1.0f), CHERT(0.9f, 0.86f);
+		LIMESTONE(0.5f, 0.29f), CHALK(0.5f, 0.29f), SHALE(0.5f, 0.29f), SILTSTONE(0.6f, 0.4f), LIGNITE(0.5f, 0.29f), DOLOMITE(0.5f, 0.29f), GREYWACKE(1.0f, 1.0f), CHERT(0.9f,
+				0.86f);
 
 		private float hardness;
 		private float resistance;
@@ -105,7 +106,7 @@ public class SedimentaryStone extends UBStone {
 	}
 
 	public UBStoneType getStoneType() {
-		return UBStoneType.SEDIMENTARY_STONE;
+		return UBStoneType.SEDIMENTARY;
 	}
 
 	public UBStoneStyle getStoneStyle() {
@@ -174,7 +175,8 @@ public class SedimentaryStone extends UBStone {
 
 	@Override
 	public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
-		return super.getExplosionResistance(world, pos, exploder, explosion) * ((SedimentaryStoneType) getActualState(getDefaultState(), world, pos).getValue(SEDIMENTARY_TYPE)).getResistance();
+		return super.getExplosionResistance(world, pos, exploder, explosion)
+				* ((SedimentaryStoneType) getActualState(getDefaultState(), world, pos).getValue(SEDIMENTARY_TYPE)).getResistance();
 	}
 
 	@Override

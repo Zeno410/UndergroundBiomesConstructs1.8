@@ -18,33 +18,123 @@ public final class UBConfig {
 		return settings.vanillaStoneBiomes.value();
 	}
 
+	/*
+	 * Buttons
+	 */
+
 	public static final boolean buttonsOn() {
 		return settings.buttonsOn.value();
 	}
 
+	public static final boolean igneousButtonsOn() {
+		int i = settings.buttonsTypes.value();
+		return i == 1 || i == 3 || i == 5 || i == 7;
+	}
+
+	public static final boolean metamorphicButtonsOn() {
+		int i = settings.buttonsTypes.value();
+		return i == 2 || i == 3 || i == 6 || i == 7;
+	}
+
+	public static final boolean sedimentaryButtonsOn() {
+		int i = settings.buttonsTypes.value();
+		return i == 4 || i == 5 || i == 6 || i == 7;
+	}
+
+	public static final boolean stoneButtonsOn() {
+		int i = settings.buttonsStyles.value();
+		return i == 1 || i == 3 || i == 5 || i == 7;
+	}
+
 	public static final boolean cobbleButtonsOn() {
-		return settings.cobbleButtonsOn.value();
+		int i = settings.buttonsStyles.value();
+		return i == 2 || i == 3 || i == 6 || i == 7;
 	}
 
 	public static final boolean brickButtonsOn() {
-		return settings.brickButtonsOn.value();
+		int i = settings.buttonsStyles.value();
+		return i == 4 || i == 5 || i == 6 || i == 7;
 	}
+
+	/*
+	 * Stairs
+	 */
 
 	public static final boolean stairsOn() {
 		return settings.stairsOn.value();
 	}
 
+	public static final boolean igneousStairsOn() {
+		int i = settings.stairsTypes.value();
+		return i == 1 || i == 3 || i == 5 || i == 7;
+	}
+
+	public static final boolean metamorphicStairsOn() {
+		int i = settings.stairsTypes.value();
+		return i == 2 || i == 3 || i == 6 || i == 7;
+	}
+
+	public static final boolean sedimentaryStairsOn() {
+		int i = settings.stairsTypes.value();
+		return i == 4 || i == 5 || i == 6 || i == 7;
+	}
+
+	public static final boolean stoneStairsOn() {
+		int i = settings.stairsStyles.value();
+		return i == 1 || i == 3 || i == 5 || i == 7;
+	}
+
 	public static final boolean cobbleStairsOn() {
-		return settings.cobbleStairsOn.value();
+		int i = settings.stairsStyles.value();
+		return i == 2 || i == 3 || i == 6 || i == 7;
 	}
 
 	public static final boolean brickStairsOn() {
-		return settings.brickStairsOn.value();
+		int i = settings.stairsStyles.value();
+		return i == 4 || i == 5 || i == 6 || i == 7;
 	}
+
+	/*
+	 * Walls
+	 */
 
 	public static final boolean wallsOn() {
 		return settings.wallsOn.value();
 	}
+
+	public static final boolean igneousWallsOn() {
+		int i = settings.wallsTypes.value();
+		return i == 1 || i == 3 || i == 5 || i == 7;
+	}
+
+	public static final boolean metamorphicWallsOn() {
+		int i = settings.wallsTypes.value();
+		return i == 2 || i == 3 || i == 6 || i == 7;
+	}
+
+	public static final boolean sedimentaryWallsOn() {
+		int i = settings.wallsTypes.value();
+		return i == 4 || i == 5 || i == 6 || i == 7;
+	}
+
+	public static final boolean stoneWallsOn() {
+		int i = settings.wallsStyles.value();
+		return i == 1 || i == 3 || i == 5 || i == 7;
+	}
+
+	public static final boolean cobbleWallsOn() {
+		int i = settings.wallsStyles.value();
+		return i == 2 || i == 3 || i == 6 || i == 7;
+	}
+
+	public static final boolean brickWallsOn() {
+		int i = settings.wallsStyles.value();
+		return i == 4 || i == 5 || i == 6 || i == 7;
+	}
+
+	/*
+	 * 
+	 */
 
 	public static final boolean harmoniousStrata() {
 		return settings.harmoniousStrata.value();

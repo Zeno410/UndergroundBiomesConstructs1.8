@@ -31,7 +31,8 @@ public class MetamorphicStone extends UBStone {
 	public static final MetamorphicStoneType[] METAMORPHIC_STONE_TYPES = MetamorphicStoneType.values();
 
 	public static enum MetamorphicStoneType implements IStringSerializable {
-		GNEISS(1.1f, 1.11f), ECLOGITE(1.0f, 1.0f), MARBLE(1.1f, 1.11f), QUARTZITE(1.3f, 1.26f), BLUESCHIST(0.7f, 0.54f), GREENSCHIST(0.7f, 0.54f), SOAPSTONE(0.4f, 0.2f), MIGMATITE(0.9f, 0.86f);
+		GNEISS(1.1f, 1.11f), ECLOGITE(1.0f, 1.0f), MARBLE(1.1f, 1.11f), QUARTZITE(1.3f, 1.26f), BLUESCHIST(0.7f, 0.54f), GREENSCHIST(0.7f, 0.54f), SOAPSTONE(0.4f,
+				0.2f), MIGMATITE(0.9f, 0.86f);
 
 		private float hardness;
 		private float resistance;
@@ -104,7 +105,7 @@ public class MetamorphicStone extends UBStone {
 	}
 
 	public UBStoneType getStoneType() {
-		return UBStoneType.METAMORPHIC_STONE;
+		return UBStoneType.METAMORPHIC;
 	}
 
 	public UBStoneStyle getStoneStyle() {
@@ -159,7 +160,8 @@ public class MetamorphicStone extends UBStone {
 
 	@Override
 	public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
-		return super.getExplosionResistance(world, pos, exploder, explosion) * ((MetamorphicStoneType) getActualState(getDefaultState(), world, pos).getValue(METAMORPHIC_TYPE)).getResistance();
+		return super.getExplosionResistance(world, pos, exploder, explosion)
+				* ((MetamorphicStoneType) getActualState(getDefaultState(), world, pos).getValue(METAMORPHIC_TYPE)).getResistance();
 	}
 
 	@Override
