@@ -25,11 +25,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
- * 1 instance -> 8 variants + powered -> 16 metadatas<br/>
- * 6 facings<br/>
- * 3 stone types<br/>
- * 2 stone styles (no brick button) except for sedimentary<br/>
- * Total : 30 instances (5 subclasses)
+ * 1 instance = 8 variants + powered -> fill 16 metadatas</br>
+ * 6 facings (1 per instance)</br>
+ * 3 stone types (1 per instance)</br>
+ * 3 stone styles (stone only for sedimentary)</br>
+ * Total : 42 instances (7 subclasses)
  * 
  * @author Spooky4672
  *

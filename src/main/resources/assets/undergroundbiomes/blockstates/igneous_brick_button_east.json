@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "igneous_type=red_granite,powered=false": { "model": "undergroundbiomes:red_granite_brick_button", "x": 90 , "y": 90 },
+        "igneous_type=black_granite,powered=false": { "model": "undergroundbiomes:black_granite_brick_button", "x": 90 , "y": 90 },
+        "igneous_type=rhyolite,powered=false": { "model": "undergroundbiomes:rhyolite_brick_button", "x": 90 , "y": 90 },
+        "igneous_type=andesite,powered=false": { "model": "undergroundbiomes:andesite_brick_button", "x": 90 , "y": 90 },
+        "igneous_type=gabbro,powered=false": { "model": "undergroundbiomes:gabbro_brick_button", "x": 90 , "y": 90 },
+        "igneous_type=basalt,powered=false": { "model": "undergroundbiomes:basalt_brick_button", "x": 90 , "y": 90 },
+        "igneous_type=komatiite,powered=false": { "model": "undergroundbiomes:komatiite_brick_button", "x": 90 , "y": 90 },
+        "igneous_type=dacite,powered=false": { "model": "undergroundbiomes:dacite_brick_button", "x": 90 , "y": 90 },
+        "igneous_type=red_granite,powered=true": { "model": "undergroundbiomes:red_granite_brick_button_pressed", "x": 90 , "y": 90 },
+        "igneous_type=black_granite,powered=true": { "model": "undergroundbiomes:black_granite_brick_button_pressed", "x": 90 , "y": 90 },
+        "igneous_type=rhyolite,powered=true": { "model": "undergroundbiomes:rhyolite_brick_button_pressed", "x": 90 , "y": 90 },
+        "igneous_type=andesite,powered=true": { "model": "undergroundbiomes:andesite_brick_button_pressed", "x": 90 , "y": 90 },
+        "igneous_type=gabbro,powered=true": { "model": "undergroundbiomes:gabbro_brick_button_pressed", "x": 90 , "y": 90 },
+        "igneous_type=basalt,powered=true": { "model": "undergroundbiomes:basalt_brick_button_pressed", "x": 90 , "y": 90 },
+        "igneous_type=komatiite,powered=true": { "model": "undergroundbiomes:komatiite_brick_button_pressed", "x": 90 , "y": 90 },
+        "igneous_type=dacite,powered=true": { "model": "undergroundbiomes:dacite_brick_button_pressed", "x": 90 , "y": 90 }
+    }
+}

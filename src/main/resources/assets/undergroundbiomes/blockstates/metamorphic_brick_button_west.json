@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "metamorphic_type=gneiss,powered=false": { "model": "undergroundbiomes:gneiss_brick_button", "x": 90, "y": 270 },
+        "metamorphic_type=eclogite,powered=false": { "model": "undergroundbiomes:eclogite_brick_button", "x": 90, "y": 270 },
+        "metamorphic_type=marble,powered=false": { "model": "undergroundbiomes:marble_brick_button", "x": 90, "y": 270 },
+        "metamorphic_type=quartzite,powered=false": { "model": "undergroundbiomes:quartzite_brick_button", "x": 90, "y": 270 },
+        "metamorphic_type=blueschist,powered=false": { "model": "undergroundbiomes:blueschist_brick_button", "x": 90, "y": 270 },
+        "metamorphic_type=greenschist,powered=false": { "model": "undergroundbiomes:greenschist_brick_button", "x": 90, "y": 270 },
+        "metamorphic_type=soapstone,powered=false": { "model": "undergroundbiomes:soapstone_brick_button", "x": 90, "y": 270 },
+        "metamorphic_type=migmatite,powered=false": { "model": "undergroundbiomes:migmatite_brick_button", "x": 90, "y": 270 },
+        "metamorphic_type=gneiss,powered=true": { "model": "undergroundbiomes:gneiss_brick_button_pressed", "x": 90, "y": 270 },
+        "metamorphic_type=eclogite,powered=true": { "model": "undergroundbiomes:eclogite_brick_button_pressed", "x": 90, "y": 270 },
+        "metamorphic_type=marble,powered=true": { "model": "undergroundbiomes:marble_brick_button_pressed", "x": 90, "y": 270 },
+        "metamorphic_type=quartzite,powered=true": { "model": "undergroundbiomes:quartzite_brick_button_pressed", "x": 90, "y": 270 },
+        "metamorphic_type=blueschist,powered=true": { "model": "undergroundbiomes:blueschist_brick_button_pressed", "x": 90, "y": 270 },
+        "metamorphic_type=greenschist,powered=true": { "model": "undergroundbiomes:greenschist_brick_button_pressed", "x": 90, "y": 270 },
+        "metamorphic_type=soapstone,powered=true": { "model": "undergroundbiomes:soapstone_brick_button_pressed", "x": 90, "y": 270 },
+        "metamorphic_type=migmatite,powered=true": { "model": "undergroundbiomes:migmatite_brick_button_pressed", "x": 90, "y": 270 }
+    }
+}

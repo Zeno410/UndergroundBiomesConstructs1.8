@@ -44,8 +44,10 @@ public final class UBEntries {
 
 	public static final ButtonEntry IGNEOUS_STONE_BUTTON = new ButtonEntry(IGNEOUS_STONE);
 	public static final ButtonEntry IGNEOUS_COBBLE_BUTTON = new ButtonEntry(IGNEOUS_COBBLE);
+	public static final ButtonEntry IGNEOUS_BRICK_BUTTON = new ButtonEntry(IGNEOUS_BRICK);
 	public static final ButtonEntry METAMORPHIC_STONE_BUTTON = new ButtonEntry(METAMORPHIC_STONE);
 	public static final ButtonEntry METAMORPHIC_COBBLE_BUTTON = new ButtonEntry(METAMORPHIC_COBBLE);
+	public static final ButtonEntry METAMORPHIC_BRICK_BUTTON = new ButtonEntry(METAMORPHIC_BRICK);
 	public static final ButtonEntry SEDIMENTARY_STONE_BUTTON = new ButtonEntry(SEDIMENTARY_STONE);
 
 	/*

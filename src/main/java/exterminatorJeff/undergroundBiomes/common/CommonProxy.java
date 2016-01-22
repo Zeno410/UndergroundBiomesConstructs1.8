@@ -19,8 +19,10 @@ import exterminatorJeff.undergroundBiomes.common.block.SedimentaryStone;
 import exterminatorJeff.undergroundBiomes.common.block.UBSlabPair;
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBButtonGroup;
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBButtonIgneous;
+import exterminatorJeff.undergroundBiomes.common.block.constructs.UBButtonIgneousBrick;
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBButtonIgneousCobble;
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBButtonMetamorphic;
+import exterminatorJeff.undergroundBiomes.common.block.constructs.UBButtonMetamorphicBrick;
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBButtonMetamorphicCobble;
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBButtonSedimentary;
 import exterminatorJeff.undergroundBiomes.common.block.constructs.UBStairsGroup;
@@ -129,7 +131,6 @@ public class CommonProxy {
 		 */
 
 		ButtonEntry e1;
-		// TODO brick buttons
 		if (UBConfig.buttonsOn()) {
 			if (UBConfig.igneousButtonsOn()) {
 				if (UBConfig.stoneButtonsOn())
@@ -140,6 +141,10 @@ public class CommonProxy {
 					(e1 = UBEntries.IGNEOUS_COBBLE_BUTTON).register(new UBButtonGroup(e1, new UBButtonIgneousCobble(e1, EnumFacing.DOWN),
 							new UBButtonIgneousCobble(e1, EnumFacing.EAST), new UBButtonIgneousCobble(e1, EnumFacing.NORTH), new UBButtonIgneousCobble(e1, EnumFacing.SOUTH),
 							new UBButtonIgneousCobble(e1, EnumFacing.UP), new UBButtonIgneousCobble(e1, EnumFacing.WEST)));
+				if (UBConfig.brickButtonsOn())
+					(e1 = UBEntries.IGNEOUS_BRICK_BUTTON).register(new UBButtonGroup(e1, new UBButtonIgneousBrick(e1, EnumFacing.DOWN),
+							new UBButtonIgneousBrick(e1, EnumFacing.EAST), new UBButtonIgneousBrick(e1, EnumFacing.NORTH), new UBButtonIgneousBrick(e1, EnumFacing.SOUTH),
+							new UBButtonIgneousBrick(e1, EnumFacing.UP), new UBButtonIgneousBrick(e1, EnumFacing.WEST)));
 			}
 			if (UBConfig.metamorphicButtonsOn()) {
 				if (UBConfig.stoneButtonsOn())
@@ -151,6 +156,11 @@ public class CommonProxy {
 							.register(new UBButtonGroup(e1, new UBButtonMetamorphicCobble(e1, EnumFacing.DOWN), new UBButtonMetamorphicCobble(e1, EnumFacing.EAST),
 									new UBButtonMetamorphicCobble(e1, EnumFacing.NORTH), new UBButtonMetamorphicCobble(e1, EnumFacing.SOUTH),
 									new UBButtonMetamorphicCobble(e1, EnumFacing.UP), new UBButtonMetamorphicCobble(e1, EnumFacing.WEST)));
+				if (UBConfig.brickButtonsOn())
+					(e1 = UBEntries.METAMORPHIC_BRICK_BUTTON)
+							.register(new UBButtonGroup(e1, new UBButtonMetamorphicBrick(e1, EnumFacing.DOWN), new UBButtonMetamorphicBrick(e1, EnumFacing.EAST),
+									new UBButtonMetamorphicBrick(e1, EnumFacing.NORTH), new UBButtonMetamorphicBrick(e1, EnumFacing.SOUTH),
+									new UBButtonMetamorphicBrick(e1, EnumFacing.UP), new UBButtonMetamorphicBrick(e1, EnumFacing.WEST)));
 			}
 			if (UBConfig.sedimentaryButtonsOn()) {
 				(e1 = UBEntries.SEDIMENTARY_STONE_BUTTON).register(new UBButtonGroup(e1, new UBButtonSedimentary(e1, EnumFacing.DOWN), new UBButtonSedimentary(e1, EnumFacing.EAST),
